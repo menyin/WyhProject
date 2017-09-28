@@ -1,0 +1,200 @@
+{extend name="public/base" /}
+{block name="style"}
+
+        <link rel="stylesheet" href="__CSS__/agent.css">
+        <link rel="stylesheet" href="__CSS__/text_list.css" />
+        <link rel="stylesheet" href="__CSS__/product_list.css" />
+    <style>
+        .ad{
+            height:100px;
+            margin-bottom:10px;}
+    </style>
+{/block}
+
+{block name="body"}
+		<div id="place">
+			<div class="container">
+				<div class="place">
+					<p>
+					    <span>了解保险</span>-<span>保险方案列表</span>-<span id="titre">意外险</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="main">
+			<div class="container">
+				<div class="main">
+					<div class="title">
+						<ul class="title_list">
+						{foreach $personal as $row}
+		 				<li {if condition="$row.id eq $Request.get.personal_id"}class="on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+		 				{/foreach}
+						</ul>
+					</div>
+					<div class="product_wrap">
+						<div class="product show">
+							<div class="condition">
+						 			<ul class="condition-choose1">
+						 				<span>投保年龄：</span>
+						 				{foreach $age as $row}
+						 				<li {if condition="$row.id eq $Request.get.age_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+						 				{/foreach}
+						 			</ul>
+						 			<ul class="condition-choose2">
+						 				<span>选择价格：</span>
+						 				{foreach $budget as $row}
+						 				<li {if condition="$row.id eq $Request.get.budget_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+						 				{/foreach}
+						 			</ul>
+						 			<ul class="condition-choose3">
+						 				<span>热门公司：</span>
+					 				    {foreach $companies as $row}
+						 				<li {if condition="$row.id eq $Request.get.company_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+						 				{/foreach}
+						 				<span class="condition-span showA1"><a href="#"> 全部公司>> </a></span>
+						 			</ul>
+						 	</div>
+						 	<div class="ad">
+                                    <a href="{:url('home/Message/index')}">
+                                         <img src="__IMG__/public/ad1.png" height="100" width="1180">
+                                     </a >
+						 	</div>
+
+						 	{notempty name="$plans"}
+						 	{foreach $plans as $row}
+    							<div class="text_main">
+                                    <div class="p_f">
+                                     	<img src="{$row.icon|default='/static/home/images/insure/p1.png'}" width="286" height="299">
+                                    </div>
+                                    <div class="p_r">
+                                     	<div class="p_r_t">
+                                     		<div class="p_r_t_1">
+                                     			<p>{$row.title}</p>
+                                                <p>侧重险种：<span></span></p>
+                                     			<p>保险对象：<span>{$row.suitable}</span> <span>{$row.sex}</span></p>
+                                     			<p><span>{$row.create_time|time_format}</span> <span>{$row.attention}关注</span> <span>{$row.like}赞</span></p>
+                                     		</div>
+                                     		<div class="p_r_t_2">
+                                     			<p>最高保额</p>
+                                     			<p>{$row.max}</p>
+                                     			<p>年缴</p>
+                                     			<p>{$row.pay_year}</p>
+                                     		</div>
+                                     	</div>
+                                     	<div class="p_r_b">
+                                     		<div class="p_r_t_3">
+                                     			<p>{$row.desc}</p>
+                                     		</div>
+                                     		<div class="p_r_t_4">
+                                                <div class="list_in">
+                                             		{notempty name="$row.contains"}
+                                             		{foreach $row.contains as $v}
+                                             			<p><span>{$v.name}</span><span>{$v.price}</span></p>
+                                             		{/foreach}
+                                             		{/notempty}
+                                                </div>
+                                     			<p class="butn"><a href="{:url('Insurance/planDetail', ['plan_id'=>$row.plan_id])}">了解详情</a></p>
+                                     		</div>
+                                     	</div>
+                                    </div>
+    							</div>
+							{/foreach}
+							{/notempty}
+						</div>
+                        <!--分页-->
+                        <div class="fenye">
+                                 <p class="fy">
+                                     {$pager}
+                                 </p>
+                        </div>
+                        <!-- 右边固定 -->
+                        <div class="list_right">
+                             <div class="list_a">
+                                <div class="list_a_top">
+                                  最新新闻 <span>更多>></span>
+                                </div>
+                                <div class="list_a_main">
+                                <ul>
+                                <!-- 8条数据 -->
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                    <li>收到收到收到阿萨德adad啊ad阿萨德阿萨德</li>
+                                </ul>
+                                </div>
+                             </div>
+
+                             <div class="list_b">
+                               <a href="{:url('home/Message/index')}">
+                                <img src="__IMG__/insure/list_b.png">
+                              </a>
+                             </div>
+
+                            <div class="kind-mian-right-2">
+                                <div class="kind-mian-right-2-top">
+                                    <p>地区资深代理人推荐</p>
+                                    <p>更多>></p>
+                                </div>
+                                <div class="kind-mian-right-2-bottom">
+                                {foreach $areaAgents as $row}
+                                    <!--数据1-->
+                                    <div class="kind-mian-right-2-bottom-people">
+                                        <div class="kmr2bp-img fl">
+                                            {notempty name="$row.head_img"}
+                                                    <img src="{$row.head_img}" height="80" width="80"/>
+                                                {else/}
+                                                     <img src="__IMG__/index/seniorInsure_1.jpg" height="80" width="80">
+                                            {/notempty}
+                                        </div>
+                                        <div class="kmr2bp-text fl">
+                                            <p>{$row.name}</p>
+                                            <p><span>{$row.province_name}{$row.city_name}</span><span>{$row.company}</span></p>
+                                            <p>微信:{$row.wechat}</p>
+                                            <p><button class="button-qq">
+                                                <a href="tencent://message/?uin={$row.qq}&Site=&Menu=yes">Q Q 交 谈</a>
+                                            </button></p>
+                                        </div>
+                                        <div class="kmr2bp-hover">
+                                            <a href="#">个人主页</a>
+                                            <button class="button-qq-hover">
+                                                <a href="tencent://message/?uin={$row.qq}&Site=&Menu=yes">Q Q 交 谈</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {/foreach}
+                                </div>
+                            </div>
+
+                        </div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+{/block}
+{block name='script'}
+<script type="text/javascript" src="__JS__/jquery.js" ></script>
+<script type="text/javascript" src="__JS__/text-list.js" ></script>
+<script>
+$(document).ready(function(){
+	  	var $category=$(".condition-choose3>li:gt(4):not(.condition-choose2>li:last)");
+	  	$category.hide();
+	  	$(".showA1").click(function(){
+	  		var show=$category.is(':hidden');
+	  		if(show){
+	  			$category.show();
+	  			$(".showA1>a").html("<<显示部分")
+	  		}else{
+	  			$category.hide();
+	  		    $(".showA1>a").html("全部公司>>")
+	  		}
+	  		return false;
+	  	})
+
+ })
+</script>
+{/block}

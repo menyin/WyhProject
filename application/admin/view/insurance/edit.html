@@ -1,0 +1,272 @@
+{extend name="public/base" /}
+{block name="style"}
+<style>
+ .add_one>span{
+ display:inline-block;
+ border:1px solid #ff5400;
+ border-radius:25%;
+ cursor:pointer;
+}
+.add_one_1>span{
+ display:inline-block;
+ border:1px solid #ff5400;
+ border-radius:25%;
+ cursor:pointer;
+}
+#ss1{
+    display:none;
+}
+#ss2{
+    display:none;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="__STATIC__/chosen/chosen.css">
+{/block}
+{block name="body"}
+<script type="text/javascript" src="__PUBLIC__/static/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>编辑保险产品</h2>
+    </div>
+    <form action="" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">保险名称<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[name]" value="{$insurance.name}">
+            </div>
+        </div>
+        <div class="form-item">
+<!--             <label class="item-label">保险公司<span class="check-tips"></span></label>
+            <select name="data[company_id]" id="">
+                {foreach $companies as $row}
+                <option value="{$row.company_id}" {if condition="$insurance.company_id eq $row.company_id"}selected="selected"{/if}>{$row.name}</option>
+                {/foreach}
+            </select>
+        </div> -->
+
+         <div class="form-item">
+            <label class="item-label">保险公司<span class="check-tips"></span></label>
+                <select class="chosen-select" style="width:260px;" name="data[company_id]" id="">
+                {foreach $companies as $row}
+                    <option value="{$row.company_id}" {if condition="$insurance.company_id eq $row.company_id"}selected="selected"{/if}>{$row.name}</option>
+                {/foreach}
+                </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">保险代理人<span class="check-tips"></span></label>
+            <select name="data[agent_id]" id="">
+                {foreach $agents as $row}
+                <option value="{$row.agent_id}" {if condition="$insurance.agent_id eq $row.agent_id"}selected="selected"{/if}>{$row.name}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">年龄范围</label>
+            <select name="data[age_id]" id="">
+                {foreach $ages as $k=>$row}
+                <option value="{$k}" {if condition="$insurance.age_id eq $k"}selected="selected"{/if}>{$row}</option>
+                {/foreach}
+            </select>(便于搜索)
+        </div>
+        <div class="form-item">
+            <label class="item-label">投保年龄</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[age]" value="{$insurance.age}"> 例，28岁， 0-88周岁
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">保险期限<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[duration]" value="{$insurance.duration}"> 例，终身，0-60周岁
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">适用人群<span class="check-tips"></span></label>
+            <select name="data[group_id]" id="">
+                {foreach $groups as $k=>$row}
+                <option value="{$k}" {if condition="$insurance.group_id eq $k"}selected="selected"{/if}>{$row}</option>
+                {/foreach}
+            </select>(便于搜索)
+        </div>
+        <div class="form-item">
+            <label class="item-label">保单形式<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" name="data[tender_type]" value="1" {if condition="$insurance.tender_type == 1"}checked="checked"{/if}>纸质保单
+                <input type="radio" name="data[tender_type]" value="2" {if condition="$insurance.tender_type == 2"}checked="checked"{/if}>电子保单
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">缴费方式<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[pay_type]" value="{$insurance.pay_type}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">产品特色<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[feature]" value="{$insurance.feature}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">推荐理由<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[reason]" value="{$insurance.reason}">
+            </div>
+        </div>
+        <div class="form-item ad_s">
+            <label class="item-label">保障项目<span class="check-tips"></span></label>
+            {notempty name="$insurance.guarantee"}
+            {foreach $insurance.guarantee as $row}
+            <div class="controls clone1">
+                <input type="text" class="text input-large" name="guarantee[name][]" value="{$row.name}">
+                <input type="text" class="text input-large" name="guarantee[price][]" value="{$row.price}">
+                <input type="text" class="text input-large" name="guarantee[desc][]" value="{$row.desc}">
+                <input type="text" class="text input-large" name="guarantee[notice][]" value="{$row.notice}">
+                <a href="javascript:;" onclick="removeline(this)">移除</a>
+            </div>
+            {/foreach}
+            {else/}
+            <div class="controls clone1">
+                <input type="text" class="text input-large" name="guarantee[name][]" placeholder="名称">
+                <input type="text" class="text input-large" name="guarantee[price][]" placeholder="金额">
+                <input type="text" class="text input-large" name="guarantee[desc][]" placeholder="说明">
+                <input type="text" class="text input-large" name="guarantee[notice][]" placeholder="注意事项">
+            </div>
+            {/notempty}
+            <div align="center" class="addline">
+                <a href="javascript:;" onclick="addline(this)">增加一行</a>
+            </div>
+
+        </div>
+        <div class="form-item ad_t" >
+            <label class="item-label">特别提醒<span class="check-tips"></span></label>
+            {notempty name="$insurance.notice"}
+            {foreach $insurance.notice as $row}
+            <div class="controls clone2">
+                <input type="text" class="text input-large" name="notice[]" value="{$row}">
+                <a href="javascript:;" onclick="removeline(this)">移除</a>
+            </div>
+            {/foreach}
+            {else/}
+            <div class="controls clone2">
+                <input type="text" class="text input-large" name="notice[]" placeholder="新加特别提醒">
+            </div>
+            {/notempty}
+            <div align="center" class="addnotice">
+                <a href="javascript:;" onclick="addnotice(this)">增加一行</a>
+            </div>
+        </div>
+        <div class="controls">
+            <label class="item-label">产品封面</label>
+            <input type="file" id="upload_picture">
+            <input type="hidden" name="data[icon]" id="icon" value="{$insurance.icon}" />
+            <div class="upload-img-box">
+                <img src="{$insurance.icon}" alt="">
+            </div>
+        </div>
+        <div id="ss1">
+
+        </div>
+        <div id="ss2">
+
+        </div>
+        <div class="form-item">
+            <label class="item-label">热门<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[hot]" {if condition="$insurance.hot == 1"}checked="checked"{/if} > 是
+                <input type="radio" class="radio" value="0" name="data[hot]" {if condition="$insurance.hot == 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">推荐<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[recommend]" {if condition="$insurance.recommend == 1"}checked="checked"{/if}> 是
+                <input type="radio" class="radio" value="0" name="data[recommend]" {if condition="$insurance.recommend == 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">状态<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[status]" {if condition="$insurance.status == 1"}checked="checked"{/if}> 正常
+                <input type="radio" class="radio" value="2" name="data[status]" {if condition="$insurance.status == 2"}checked="checked"{/if}> 禁用
+                <input type="radio" class="radio" value="0" name="data[status]" {if condition="$insurance.status == 0"}checked="checked"{/if}> 待审核
+                <input type="radio" class="radio" value="-1" name="data[status]" {if condition="$insurance.status == -1"}checked="checked"{/if}> 删除
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+        //上传图片
+        /* 初始化上传插件 */
+        $("#upload_picture").uploadify({
+            "height"          : 30,
+            "swf"             : "__PUBLIC__/static/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:url('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadPicture,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+        function uploadPicture(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if(data.status){
+                src = data.url || '__ROOT__' + data.path;
+                $("#icon").val(src);
+                $("#icon").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+        </script>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+{/block}
+
+{block name="script"}
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:url('Insurance/index')}');
+    </script>
+
+    <!--调用CHOSEN -->
+    <!-- //引入CHOSRNjs -->
+     <script src="__STATIC__/chosen/chosen.jquery.min.js"></script>
+    <!--调用CHOSEN -->
+    <script >
+        $('.chosen-select').chosen({
+            search_contains: true,
+            no_results_text:"没有找到",
+            placeholder_text : "My language message.",
+            disable_search_threshold:10,
+
+
+        });
+    </script>
+    <script>
+        function removeline(that) {
+            $(that).parent('.controls').remove();
+        }
+        function addline(that) {
+            var line = '<div class="controls clone1"> <input type="text" class="text input-large" name="guarantee[name][]" placeholder="名称"> <input type="text" class="text input-large" name="guarantee[price][]" placeholder="金额"> <input type="text" class="text input-large" name="guarantee[desc][]" placeholder="说明"> <input type="text" class="text input-large" name="guarantee[notice][]" placeholder="注意事项"> <a href="javascript:;" onclick="removeline(this)">移除</a></div>';
+            $('.addline').before(line);
+        }
+        function addnotice(that) {
+            var line = '<div class="controls clone2"> <input type="text" class="text input-large" name="notice[]" placeholder="新加特别提醒"> <a href="javascript:;" onclick="removeline(this)">移除</a></div>';
+            $('.addnotice').before(line);
+        }
+    </script>
+{/block}

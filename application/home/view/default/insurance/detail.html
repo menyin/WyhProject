@@ -1,0 +1,299 @@
+{extend name="public/base" /}
+{block name="style"}
+		<link rel="stylesheet" href="__CSS__/gongyong.css" />
+		<link rel="stylesheet" href="__CSS__/product.css" />
+{/block}
+{block name="body"}
+	    <!--详情-->
+	    <div id="product-main">
+	    	<div class="container">
+	    		<div class="product-main">
+	    			<div class="product-main-top ">
+	    				<span><a href="{:url('home/insurance/index')}">保险产品</a></span> > <span>{$insurance.name}</span>
+	    			</div>
+	    			<div class="product-main-bottom">
+	    				<div class="product-main-img fl">
+	    				{notempty name="$insurance.icon"}
+	    					<img src="{$insurance.icon}" height="400" width="400">
+	    				{else/}
+	    					<img src="__IMG__/insure/product-1ceshi.png" height="400" width="400">
+	    				{/notempty}
+	    				</div>
+	    				<div class="product-main-introduce fl">
+	    					<div class="product-main-money">
+		    					<p>
+		    						<span class="product-main-money-title">{$insurance.name}</span>
+		    						<span class="pamt-little">({$insurance.reason})</span>
+		    					</p>
+		    					<p>
+		    						<span>温馨提示：</span>
+		    						请说明该信息来源于法保兜保险网
+		    					</p>
+		    					<p>
+		    					<span>点击分享：</span>
+		    						<span class="jiathis_style">
+										<a class="jiathis_button_qzone"></a>
+										<a class="jiathis_button_tsina"></a>
+										<a class="jiathis_button_tqq"></a>
+										<a class="jiathis_button_weixin"></a>
+										<a class="jiathis_button_renren"></a>
+										<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+								    </span>
+		    						<!-- 丨 -->
+		    						<!-- <span class="xin-love"></span> -->
+		    						<!-- <a href="#"><span class="fx-bj">加入收藏立即报价</span></a> -->
+		    					</p>
+		    					<p>
+		    						<a href="#">联系报价</a>
+		    					</p>
+		    					<p>
+		    					<span></span>
+		    					<span><a href="#"></a></span>
+		    					</p>
+	    					</div>
+	    					<div class="product-tese">
+	    						<p>产品特色：</p>
+	    						<p>{$insurance.feature}</p>
+	    						<p><span></span><a href="#">查看详情>></a></p>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!--END详情-->
+	    <!-- AD -->
+	    <div id="ad">
+	    	<div class="container">
+	    		<div class="flow-123">
+					    <img src="__IMG__/insure/ad2.png">
+				</div>
+	    	</div>
+	    </div>
+		<!--流程-->
+		<div id="flow">
+			<div class="container">
+				<div class="flow">
+					<div class="flow-list">
+						<ul>
+							<li class="list-on"><a href="#chanpingxiangqing">产品详情</a></li>
+
+							<!-- <li><a href="#toubaoxuzhi">投保须知</a></li> -->
+
+							<li><a href="#baoxiananli">保险案例</a></li>
+
+							<!-- <li><a href="#lipeifuwu">理赔服务</a></li>
+
+							<li><a href="#changjianwenti">常见问题</a></li> -->
+
+							<!-- <li><a href="#kehupinjia">客户评价(1061)</a></li> -->
+						</ul>
+
+					</div>
+					<a name="chanpingxiangqing"></a>
+					<div class="product-details">
+						<p><span class="details-title">被保险人：</span>80周岁以下，经常乘坐交通工具的人士   <span class="details-title">保险期限：</span>{$insurance.duration}</p>
+						<p><span class="details-title">保单形式：</span>电子保单 纸质保单  <span class="details-title">保险责任：</span>请阅读<a href="#">《一年期交通意外险适用条款》</a></p>
+					    <!--表格-->
+					     <table width="1100" border="0" cellpadding="0" cellspacing="0">
+							  <tbody>
+							    <tr>
+							      <th width="278" height="40" scope="col">保障项目</th>
+							      <th width="278" scope="col">保险金额(元)</th>
+							      <th width="543" scope="col">保障范围</th>
+							    </tr>
+							    {notempty name="$insurance.guarantee"}
+							    {foreach $insurance.guarantee as $row}
+							    <tr>
+							      <td height="51">{$row.name}</td>
+							      <td> {$row.price}</td>
+							      <td class="td-le">
+							      	{$row.desc}
+							      	<span class="td-color">{$row.notice}</span>
+							      </td>
+							    </tr>
+							    {/foreach}
+							    {/notempty}
+							    <tr>
+							      <td height="56" colspan="3">保险责任请参考《一年期交通意外险条款》，并敬请特别留意条款中的“<a href="#">责任免除</a>”部分</td>
+							    </tr>
+							  </tbody>
+						</table>
+
+						<p>特别提醒</p>
+						<p>
+						{notempty name="$insurance.notice"}
+							{foreach $insurance.notice as $k=>$v}
+								{$k + 1}、{$v} <br />
+							{/foreach}
+						{/notempty}
+						</p>
+						<p>隐私保护声明</p>
+						<a name="toubaoxuzhi"></a>
+						<p>您提供的个人信息、数据和隐私我们不会提供给任何未获授权的第三方。</p>
+
+					</div>
+					<!--投保须知-->
+
+					<!-- <div class="must-konw">
+
+						<p class="title-all">投保须知</p>
+						<div class="must-know-main">
+							<div class="must-know-main-top">
+								<p>不要轻易付款</p>
+								<p>1.填写投保信息 &nbsp;&nbsp;&nbsp; 2.确认信息和金额 &nbsp;&nbsp;&nbsp;3.在线支付</p>
+							</div>
+							<div class="must-know-main-bottom">
+								<a name="baoxiananli"></a>
+								1：每位被保险人同一保险期间的飞机意外保额最高为800万，火车/轮船意外保额最高为100万，汽车保额最高为30万，多投无效。<br>
+								2：未成年人除飞机意外以外的身故保险金额最高不超过10万元<br>
+								3：保险起期可自由选择，当天投保，保险生效日期最早为次日零时。但投保当天的航班，我们也提供航空意外保障（航班延误保障则次日生效）。<br>
+								4：24小时理赔报案电话：95511。<br>
+
+							</div>
+						</div>
+					</div> -->
+					<!--保险案例 he保险专题-->
+					<div class="two">
+						<a name="lipeifuwu"></a>
+						<div class="insure-anli fl">
+							<p class="title-all">保险案例>><a href="#">更多</a></p>
+							<div class="insure-anli-main">
+								<ul class="fl">
+								{foreach $cases as $k=>$row}
+								{if condition="$k < 4"}
+									<li><a href="{:url('Article/detail',['id'=>$row.article_id])}">• {$row.title}</a></li>
+								{/if}
+								{/foreach}
+								</ul>
+								<ul class="fr">
+								{foreach $cases as $k=>$row}
+								{if condition="$k >= 4"}
+									<li><a href="{:url('Article/detail',['id'=>$row.article_id])}">• {$row.title}</a></li>
+								{/if}
+								{/foreach}
+								</ul>
+							</div>
+						</div>
+
+						<div class="insuer-tips fr">
+							<p class="title-all">保险专题>><a href="#">更多</a></p>
+							<div class="insure-tips-main">
+								<a href="{:url('Article/detail', ['id'=>$topics[0]['article_id']])}">
+									<p>{$topics[0]['title']}</p>
+								</a>
+
+								<div class="zhuantiright">
+								{foreach $topics as $k=>$row}
+								{if condition="$k > 0"}
+									<p><a href="{:url('Article/detail', ['id'=>$row.article_id])}">{$k}. {$row.title}</a></p>
+								{/if}
+								{/foreach}
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!--理赔服务-->
+					{notempty name="$insurance.claims"}
+					<div class="lipei">
+						<a name="changjianwenti"></a>
+						<p class="title-all">理赔服务</p>
+						<div class="lipei-main">
+							<p>{$insurance.claims.desc}</p>
+							<p>
+							{notempty name="$insurance.claims.claims"}
+							{foreach $insurance.claims.claims as $k=>$row}
+								<span>{$k+1}&nbsp;&nbsp;{$row}</span>
+							{/foreach}
+							{/notempty}
+							</p>
+
+						</div>
+					</div>
+					{/notempty}
+
+					<!--常见问题-->
+					<!-- <div class="problem">
+
+						<p class="title-all">常见问题</p>
+						<div class="problem-main">
+							<div class="problem1">
+								<p>1.一年期交通意外险和短期交通意外险有什么区别？</p>
+								<p>投保一年期交通意外险保费更划算，一次投保，全年安心，较适合经常出差的商旅人士购买。</p>
+							</div>
+							<div class="problem1">
+								<p>2.投保交通意外险，国外的航班也在承保范围内吗？</p>
+								<p>对于交通意外险，只要是被保险人以乘客身份乘坐民航客机、商业营运的火车、轮船和商业营运的汽车，不论境内境外，都在保障范围之内。如果被保
+									险人是为出国而购买保险，或者是为了办理出国签证购买的保险，建议客户购买境外旅行险或者境外留学或工作保险，这两款保险具有境外紧急救援服
+									务，比较适合出国人士.</p>
+							</div>
+							<div class="problem1">
+								<p>3.航班延误申请赔偿时需要准备哪些材料呢？</p>
+								<p>申请航班延误赔偿应准备保险单或保险单号、被保险人身份证明文件和航空公司出具的关于延误和延误时间的正式书面证明文件。若被保险人委托他人
+									申请的，还应提供授权委托书原件、委托人和受托人的身份证明等相关证明文件。</p>
+							</div>
+						</div>
+					</div> -->
+
+					<!--客户评价-->
+					<!-- <div class="apprase">
+						<a name="kehupinjia"></a>
+						<p class="title-all">客户评价</p>
+						<div class="apprase-main">
+							<div class="grade">
+								<div class="grade1 fl">
+									<p>综合得分</p>
+									<p>4.7</p>
+								</div>
+								<p class="fl">大家印象</p>
+								<div class="impression fr">
+									<ul>
+										<li>网上购买方便<span>(87)</span></li>
+										<li>价格优惠<span>(55)</span></li>
+										<li>支付方便<span>(50)</span></li>
+										<li>产品保障全面(<span>(48)</span></li>
+										<li>活动很好<span>(66)</span></li>
+										<li>下次再来<span>(29)</span></li>
+										<li>客服耐心、周到<span>(66)</span></li>
+										<li>送保单快<span>(35)</span></li>
+									</ul>
+								</div>
+							</div>
+							<div class="grade-eva">
+								<span><label><input type="radio" name="pj" checked="checked">全部(755)</label></span>
+								<span><label><input type="radio" name="pj">好评(600)</label></span>
+								<span><label><input type="radio" name="pj">中评(155)</label></span>
+								<span><label><input type="radio" name="pj">差评(0)</label></span>
+							</div>
+							<div class="grade-main">
+								<ul>
+									<li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								    <li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								    <li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								    <li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								    <li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								    <li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								    <li>晓**评价：好<span>2017-03-16 14:49</span></li>
+								</ul>
+								 <div class="fy">
+								</div>
+							</div>
+						</div>
+					</div> -->
+
+				</div>
+			</div>
+		</div>
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="__JS__/jquery.js" ></script>
+<script type="text/javascript" src="__JS__/main.js" ></script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<script>
+	$(document).ready(function(){
+		  $(".nav-main>li:eq(1)").addClass('indexon');
+	})
+</script>
+{/block}

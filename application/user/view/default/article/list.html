@@ -1,0 +1,40 @@
+{extend name="public/base" /}
+
+{block name="body"}
+<div>
+    <header class="header-article-list">
+        <div class="article-position">{$category.title}</div>
+        <ul>
+<!--             <li><a href="article_list.html">行业新闻</a></li>
+            <li><a href="article_list.html">家居百科</a></li>
+            <li><a href="article_list.html">公司新闻</a></li>
+ -->        </ul>
+        <div class="article-more-btn">
+            <a href="article_list_more.html">MORE &#62; &#62;</a>
+        </div>
+    </header>
+
+    <section class="article-content">
+        <ul>
+        {foreach $articles as $row}
+            <li>
+                <div class="article-date">
+                    <strong>{$row.publish_time|date="d",###}</strong>
+                    <p>{$row.publish_time|date="Y/m",###}</p>
+                </div>
+                <div class="article-info">
+                    <a href="{:url('user/Cases/detail',['id'=>$Request.get.id, 'article_id'=>$row.article_id])}">
+                        <h3>{$row.title}</h3>
+                        <p>{$row.desc}</p>
+                    </a>
+                </div>
+            </li>
+        {/foreach}
+        </ul>
+        <div>
+            {$pager}
+        </div>
+
+    </section>
+</div>
+{/block}

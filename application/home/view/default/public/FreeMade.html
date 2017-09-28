@@ -1,0 +1,128 @@
+{extend name="public/base" /}
+
+{block name="style"}
+		<link href="__CSS__/free.css" rel="stylesheet">
+{/block}
+
+{block name="body"}
+    <div class="FreeIMG">
+		<img src="__IMG__/public/Freebanner.jpg">
+	</div>
+	<div id="FreeMade">
+		<div class="container">
+			<div class="FreeMade">
+				<form action="" method="post" id="Free">
+					<div class="free_main">
+						<!--性别-->
+						<div class="free_main_choose">
+							<span>您的性别：</span>
+							<label>
+								<input type="radio" name="Free-sex"/>男
+							</label>
+							<label>
+								<input type="radio" name="Free-sex"/>女
+							</label>
+						</div>
+						<!--出生年月-->
+						<div class="free_main_choose">
+							<span>出生年月：</span>
+							<span id="date">
+								<select name="year" id="year">
+									<option value="">选择年份</option>
+								</select>
+								<select name="month" id="month">
+									<option value="">选择月份</option>
+								</select>
+								<select id="days" class="day">
+									<option value="">选择日期</option>
+								</select>
+							</span>
+						</div>
+						<!--居住地-->
+						<div class="free_main_choose">
+							<span>现居住地：</span>
+							<span id="FreeCity" class="citys">
+	                                <select name="province"></select>
+				                    <select name="city"></select>
+				                    <select name="area"></select>
+				            </span>
+						</div>
+						<!--保障需求-->
+						<div class="free_main_choose">
+							<span>保险需求：</span>
+							<span><input type="checkbox" value="重疾险" name="FreeCheck">重疾险</span>
+							<span><input type="checkbox" value="养老险" name="FreeCheck">养老险</span>
+							<span><input type="checkbox" value="人寿险" name="FreeCheck">人寿险</span>
+							<span><input type="checkbox" value="少儿险" name="FreeCheck">少儿险</span>
+							<span><input type="checkbox" value="意外险" name="FreeCheck">意外险</span>
+							<span><input type="checkbox" value="医疗险" name="FreeCheck">医疗险</span>
+							<span><input type="checkbox" value="理财险" name="FreeCheck">理财险</span>
+							<span><input type="checkbox" value="车险" name="FreeCheck">车险</span>
+						    <span class="tips">(可多选)</span>
+						</div>
+						<!--文字说明-->
+						<div class="free_main_choose notes">
+							填写联系方式，免费获取专业推荐
+						</div>
+						<!--称呼-->
+						<div class="free_main_choose">
+							<span>您的称呼：</span>
+							<input type="text" placeholder="必填" name="username" class="freeN"/>
+						</div>
+						<!--手机号码-->
+						<div class="free_main_choose">
+							<span>手机号码：</span>
+							<input type="text" placeholder="必填" name="mobilephone" id="mobilephone" class="freeN"/>
+						</div>
+							<!--验证码-->
+						<div class="free_main_choose">
+							<span>短信验证码：</span>
+							<input type="text" placeholder="必填" name="code" id="code" class="freeN"/> <input type="button" value="获取验证码" onclick='time(this)' class="Getyzm"/>
+						</div>
+						<div class="free_main_choose contac">
+							<input type="checkbox" value="车险" name="FreeMade" checked="checked">安排保险人联系我
+						</div>
+						<div class="free_main_choose">
+							<input type="submit" value="完成定制" class="finir"/>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+{/block}
+{block name="script"}
+
+<script type="text/javascript" src="__JS__/GetYzm.js" ></script>
+<script type="text/javascript" src="__JS__/jquery.js" ></script>
+<script type="text/javascript" src="__JS__/Yearselect.js"></script>
+<script type="text/javascript" src="__JS__/jquery.citys.js" ></script>
+<script type="text/javascript" src="__JS__/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="__JS__/free.js" ></script>
+<!--调用时间选择-->
+	<script type="text/javascript">
+		window.onload=function(){
+			$("#date").selectDate()
+			$("#days").focusout(function(){
+				var year = $("#year option:selected").html()
+				var month = $("#month option:selected").html()
+				var day = $("#days option:selected").html()
+				console.log(year+month+day)
+			})
+//				<!--调用城市三级联动选择-->
+	        $('#FreeCity').citys({valueType:'name',province:'福建',city:'厦门',area:'思明'});
+		}
+	</script>
+<!--voildate-->
+<script>
+		$.validator.setDefaults({
+		    submitHandler: function() {
+		      alert("提交成功，我们将尽快和您联系");
+		    }
+		});
+		$().ready(function() {
+		    $("#Free").validate();
+		});
+</script>
+{/block}

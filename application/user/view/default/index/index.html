@@ -1,0 +1,141 @@
+{extend name="public/base" /}
+
+{block name="body"}
+<!--4个圆圈部分-->
+<section class="index-product">
+    <main>
+        <ul>
+            <li class="index-active"><a href="#one">首页</a></li>
+            <li><a href="#two">自我介绍</a></li>
+            <li><a href="#three">精选案例</a></li>
+            <li><a href="#four">最新资讯</a></li>
+        </ul>
+    </main>
+
+    <main></main>
+    <main></main>
+
+</section>
+<!--自我介绍-->
+
+<section class="index-section">
+    <div>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="index-content">
+        <section class="index-content-section-first index-content-section-second">
+        	 <div>
+                <div class="index-auto">
+                	<a name="two"></a>
+		            <article>个人荣誉</article>
+		            <h6>PERSONAL-HONOR</h6>
+		            <main>{$agentInfo.honor}</main>
+                </div>
+            </div>
+        </section>
+        <section class="index-content-section-second">
+            <div>
+                <div class="index-auto">
+                	<a name="two"></a>
+		            <article>自我介绍</article>
+		            <h6>SELF-INTRODUCTION</h6>
+		            <main>{$agentInfo.introduction}</main>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>
+
+<!--荣誉墙-->
+<section class="index-margin-bottom">
+    <div class="index-morecase">
+        <span class="case casery"></span>
+    </div>
+    <div class="index-content">
+        <div class="product-list product-list1">
+        {empty name="honors"}
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3">
+                <a href="javascript:void(0)">
+                    <img src="__IMG__/user/no-honer.png">
+                </a>
+            </div>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3">
+                <a href="javascript:void(0)">
+                    <img src="__IMG__/user/no-honer.png">
+                </a>
+            </div>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3">
+                <a href="javascript:void(0)">
+                     <img src="__IMG__/user/no-honer.png">
+                </a>
+            </div>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3">
+                <a href="javascript:void(0)">
+                     <img src="__IMG__/user/no-honer.png">
+                </a>
+            </div>
+        {else /}
+            {foreach $honors as $k=>$row}
+                <div class="am-u-sm-3 am-u-md-3 am-u-lg-3">
+                    <a href="javascript:void(0)">
+                       <img src="{$row.path}">
+                    </a>
+                </div>
+            {/foreach}
+        {/empty}
+        </div>
+    </div>
+</section>
+
+<!--精选案例-->
+<a name="three"></a>
+<section class="index-margin-bottom">
+    <div class="index-morecase">
+        <span class="case"></span>
+        <a href="{:url('/user/Cases/index')}?id={$agentId|default=3}">MORE &#62; &#62;</a>
+    </div>
+    <div class="index-content">
+        <div class="product-list">
+        {foreach $cases as $row}
+            <div class="am-u-sm-4am-u-md-4 am-u-lg-4">
+                <a href="{:url('user/Article/detail', ['article_id'=>$row.article_id])}?id={$agentId|default=3}">
+                    <p>{$row.title}</p>
+                    <p>{$row.desc}</p>
+                </a>
+            </div>
+        {/foreach}
+        </div>
+    </div>
+</section>
+
+<!--精选资讯-->
+<a name="four"></a>
+<section class="index-margin-bottom">
+    <div class="index-morecase">
+        <span></span>
+        <a href="{:url('/user/Article/news')}?id={$agentId|default=3}">MORE &#62; &#62;</a>
+    </div>
+    <div class="index-content">
+
+
+        <div class="new-index">
+            <ul>
+                <li><img  src="__IMG__/user/productlogo.png" alt=""> </li>
+                <li>  <a href="{:url('user/Article/detail',['article_id'=>$firstArticle['article_id']])}?id={$agentId}"><h3>{$firstArticle['title']}</h3>
+                    <article>{$firstArticle['desc']}</article></a></li>
+            </ul>
+            <ul>
+            {foreach $articles as $row}
+                <li><a href="article_list_content.html"><h3>{$row.title}</h3>
+                    <article>{$row.desc}</article>
+                </a></li>
+            {/foreach}
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+﻿{/block}

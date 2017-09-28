@@ -1,0 +1,180 @@
+.main{
+	width: 1180px;
+	height:auto;
+	background-color: #FFFFFF;
+}
+.title{
+	height: 70px;
+    border-bottom: 1px solid #ff5400;
+}
+.title_list>li.on>a{
+	color: #FF5400;
+}
+.fy{
+   padding-left: 29%;
+}
+.title>ul>li{
+	width: 140px;
+    height: 100%;
+    display: inline-block;
+    line-height: 70px;
+    text-align: center;
+    font-size: 27px;
+    cursor: pointer;
+}
+.product_wrap{
+	height:auto;
+        position: relative;
+            margin-top: 20px;
+}
+.product{
+    width:860px;
+	overflow: hidden;
+	display: none;
+	height: auto;
+}
+.product:nth-of-type(3){
+	padding-left: 40px;
+}
+.show{
+	display: block;
+}
+.text_main {
+    height: auto;
+    padding: 20px 40px 25px 30px;
+    border-bottom: 1px dashed #999999;
+    width: 860px;
+}
+.text_main>p:nth-of-type(1){
+	font-size: 24px;
+	margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.text_main>p:nth-of-type(2){
+	font-size: 16px;
+	color:#807d7d;
+	line-height: 25px;
+	letter-spacing: 2px;
+	text-indent: 32px;
+    height：100px;
+}
+.text_main>p:nth-of-type(3){
+	font-size:14px;
+	margin-top: 17px;
+	text-align: right;
+	letter-spacing: 2px;
+}
+.text_main>p:nth-of-type(3)>span:nth-of-type(3){
+	margin-left: 5px;
+}
+.text_main>p:nth-of-type(3)>span:nth-of-type(3)>a{
+	color: #FF5400;
+}
+.fenye{
+    left: 32%;
+}
+.place{
+	height: 55px;
+	line-height: 55px;
+	padding-left: 20px;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+.fenye>p>a{
+	border: 1px solid #FF5400;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    color: #FF5400;
+    display: inline-block;
+    margin: 0 2px;
+}
+.fenye>p{
+	text-align: center;
+}
+/*分页效果*/
+.fenye>p>a:hover{
+	background-color: #ff5400;
+	color: #FFFFFF;
+}
+.p_on{
+	background-color: #ff5400;
+	color: #FFFFFF !important;
+}
+	table{
+		border-top: 1px solid #999999;
+		border-left: 1px solid #999999;
+	}
+
+	td{
+		text-align: center;
+		height: 55px;
+		border-bottom: 1px solid #999999;
+		border-right: 1px solid #999999;
+		font-size: 14px;
+	}
+
+.list_ad{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.list_ad_1{
+    height:150px;
+    width:300px;
+    position:relative;
+    margin-bottom:20px;
+}
+.list_ad_1:nth-of-type(2){
+    padding:0 10px;
+}
+.list_ad_1:nth-of-type(3){
+    padding:0 10px;
+}
+.list_title{
+    width:300px;
+    position:absolute;
+    height:40px;
+    background-color:#000;
+    opacity: 0.5;
+    bottom: 0;
+}
+.list_title_1{
+    width:300px;
+    position:absolute;
+    height:40px;
+    line-height:40px;
+    bottom: 0;
+    text-align: center;
+    color:#fff;
+    font-size:18px
+}
+
+.insure_title{
+    border-bottom: 2px solid #F8AB88;
+}
+.insure_title>span:nth-of-type(1){
+    font-size:18px;
+    color:#000;
+}
+
+.insure_title>span:nth-of-type(2){
+    float: right;
+    display:inline-block;
+    font-size:14px;
+
+}
+
+.insure_title>span:nth-of-type(2)>a{
+     color:#ff0000;
+}
+.in_main>ul>li{
+     display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 25px;
+}
+.in_main>ul>li>a{
+font-size:14px;
+}
+

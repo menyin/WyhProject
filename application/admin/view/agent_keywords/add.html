@@ -1,0 +1,56 @@
+{extend name="public/base" /}
+
+{block name="body"}
+    <div class="main-title">
+        <h2>新增用户</h2>
+    </div>
+    <form action="{:url()}" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">保险代理人<span class="check-tips"></span></label>
+            <div class="controls">
+                <select name="data[agent_id]" id="">
+                    {volist name="agents" id="agent" key="k"}
+                    <option value="{$k}">{$agent}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">关键词<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[title]" placeholder="多个词请用英文逗号,隔开">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">开始时间<span class="check-tips">（合作开始）</span></label>
+            <div class="controls">
+                <input type="text" readonly="readonly" name="data[start_time]" class="text input-large" onclick="layui.laydate({elem: this, istime: false, format: 'YYYY-MM-DD'})" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">结束时间<span class="check-tips">（合作结束）</span></label>
+            <div class="controls">
+                <input type="text" readonly="readonly" name="data[end_time]" class="text input-large" onclick="layui.laydate({elem: this, istime: false, format: 'YYYY-MM-DD'})" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">状态<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" name="data[status]" value="1" checked="checked" />启用 
+                <input type="radio" name="data[status]" value="0" />禁用 
+                <input type="radio" name="data[status]" value="-1" />删除 
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('AgentKeywords/index')}');
+</script>
+
+{/block}

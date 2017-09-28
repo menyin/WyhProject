@@ -1,0 +1,380 @@
+{extend name="public/base" /} {block name="style"}
+<link rel="stylesheet" href="__CSS__/find-insure.css" /> {/block} {block name="body"}
+<!-- 头部区域开始-->
+<div id="top">
+	<div class="container">
+		<div class="top">
+			<div class="top-left fl">
+				<span class="choose-zone">保险分类</span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 头部区域结束-->
+<!--选择区域-->
+<div id="condition">
+	<div class="container">
+		<div class="condition">
+			<ul class="condition-choose1">
+				<span>投保对象：</span >
+		 				{foreach $group as $row}
+		 				<li {if condition="$row.id eq $Request.get.group_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+		 				{/foreach}
+		 			</ul>
+		 			<ul class="condition-choose2">
+		 				<span>投保年龄：</span> {foreach $age as $row}
+				<li {if condition="$row.id eq $Request.get.age_id" }class="condition-on" {/if}>
+					<a href="{$row.link}">{$row.name}</a>
+				</li>
+				{/foreach}
+			</ul>
+			<ul class="condition-choose3">
+				<span>人身保险：</span> {foreach $personal as $row}
+				<li {if condition="$row.id eq $Request.get.personal_id" }class="condition-on" {/if}>
+					<a href="{$row.link}">{$row.name}</a>
+				</li>
+				{/foreach}
+			</ul>
+			<ul class="condition-choose4">
+				<span>财产保险：</span> {foreach $property as $row}
+				<li {if condition="$row.id eq $Request.get.property_id" }class="condition-on" {/if}>
+					<a href="{$row.link}">{$row.name}</a>
+				</li>
+				{/foreach}
+				<span class="condition-span showB1"><a href="#">展开全部>></a></span>
+			</ul>
+			<ul class="condition-choose5">
+				<span>保险公司：</span> {foreach $companies as $row}
+				<li {if condition="$row.id eq $Request.get.company_id" }class="condition-on" {/if}>
+					<a href="{$row.link}">{$row.name}</a>
+				</li>
+				{/foreach}
+				<span class="condition-span showB2"> <a href="#">展开全部>></a> </span>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--选择区域结束-->
+<!--广告区域开始-->
+<div id="find-ad">
+	<div class="container">
+		<div class="find-ad">
+			<a href="{:url('home/Message/index')}">
+				<img src="__IMG__/public/ad1.png" height="130" width="1180">
+			</a>
+		</div>
+	</div>
+</div>
+<!--广告区域结束-->
+<!--种类区域-->
+<div id="find-kind">
+	<div class="container">
+		<div class="find-kind">
+			<div class="find-kind-top">
+				<ul class="find-kind-top-ul">
+					{foreach $orderTitle as $k=>$row}
+					<li {if condition="$k eq $Request.get.order_id" }class="kind-on" {/if}>
+						<a href="{$row.link}">{$row.name}</a>
+					</li>
+					{/foreach}
+					<li>
+						<a href="{:url('/home/Insurance/plan')}">更多方案>></a>
+					</li>
+				</ul>
+			</div>
+			<div class="find-kind-main">
+				<div class="kind-main-left">
+					<!--保险种类信息-->
+					{notempty name="$insurances"}					
+					
+					{foreach $insurances as $row}
+					<!--数据-->
+					<div class="kind-insure fl">
+						<div class="kind-insure-no">
+							<div class="kind-insure-img fl">
+								{notempty name="$row.icon"}
+								<img src="{$row.icon}" height="202" width="202" /> {else/}
+								<img src="__IMG__/insure/product_all.png" height="202" width="202"> {/notempty}
+							</div>
+
+							<div class="kind-insure-main">
+								<!-- 产品名字 -->
+								<p>{$row.name}</p>
+
+								<div class="kind1">
+									<!-- 保障需求 -->
+									<div class="kind1_a fl">
+										<p>投保年龄：<span>{$allCates[$row.age_id]}</span></p>
+										<p>保险期限：<span>{$row.duration}</span></p>
+										<p>适合人群：<span>{$allCates[$row.group_id]}</span></p>
+									</div>
+									<!-- 保障项目 -->
+									<div class="kind1_b fl">
+										<div>保障项目</div>
+										<ul>
+											{notempty name="$row.guarantee"} {foreach $row.guarantee as $v}
+											<li>{$v.name}：<span class="red1">{$v.price}</span></li>
+											{/foreach} {/notempty}
+										</ul>
+									</div>
+									<div class="kind_2">
+										<div class="kind_c fl">
+											<p>产品特色:</p>
+											<p>{$row.feature}</p>
+										</div>
+										<div class="kind_d fl">
+											<p><span><a href="{:url('/home/message/index')}">￥按需求定制</a></span></p>
+											<p>
+												<a href="{:url('Insurance/detail',['id'=>$row.insurance_id])}" class="more">
+													<input type="button" id="sub_btn" value="查看更多" />
+												</a>
+												<p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					{/foreach}
+					<!--下边的选项-->
+					<div class="find-kind-bottom">
+						<div class="fy">
+							{$pager}
+						</div>
+					</div>
+					{else/}
+						<div class="no-data" >
+				 			<img src="__IMG__/user/NONO.png" >
+				 		</div>
+					{/notempty}
+				</div>
+				<div class="kind-main-right">
+					<!--注册-->
+					<div class="kind-mian-right-1">
+						<a href="#">
+							<img src="__IMG__/insure/adShort2.jpg" width="300" height="280">
+						</a>
+					</div>
+					<!--地区资深代理人-->
+					<div class="kind-mian-right-2">
+						<div class="kind-mian-right-2-top">
+							<p>地区资深代理人推荐</p>
+							<p>更多>></p>
+						</div>
+						<div class="kind-mian-right-2-bottom">
+							{foreach $areaAgents as $row}
+							<!--数据1-->
+							<div class="kind-mian-right-2-bottom-people">
+								<div class="kmr2bp-img fl">
+									{notempty name="$row.head_img"}
+									<img src="{$row.head_img}" height="80" width="80" /> {else/}
+									<img src="__IMG__/index/seniorInsure_1.jpg" height="80" width="80"> {/notempty}
+								</div>
+								<div class="kmr2bp-text fl">
+									<p>{$row.name}</p>
+									<p><span>{$row.province_name}{$row.city_name}</span><span>{$row.company}</span></p>
+									<p>微信:{$row.wechat}</p>
+									<p><button class="button-qq">
+												<a href="tencent://message/?uin={$row.qq}&Site=&Menu=yes">Q Q 交 谈</a>
+											</button></p>
+								</div>
+								<div class="kmr2bp-hover">
+									<a href="#">个人主页</a>
+									<button class="button-qq-hover">
+												<a href="tencent://message/?uin={$row.qq}&Site=&Menu=yes">Q Q 交 谈</a>
+											</button>
+								</div>
+							</div>
+							{/foreach}
+						</div>
+					</div>
+					<!--免费定制区域-->
+					<div class="window" id="window">
+						<a href="{:url('/home/message/index')}">
+							<img src="__IMG__/public/Free_Made.gif" />
+						</a>
+					</div>
+					<!--热门产品-->
+					<div class="kind-mian-right-3">
+						<div class="hot-kind-top">
+							<p>热门产品</p>
+						</div>
+						<div class="hot-kind-bottom">
+							{foreach $hotInsurances as $row}
+							<!--第一条数据-->
+							<a href="{:url('Insurance/detail', ['id'=>$row.insurance_id])}">
+								<div class="hot-kind-main">
+									<p>{$row.name}</p>
+									<div class="hot-kind-main-1">
+										<div class="hot-kind-main-img fl">
+											<img src="{$row.icon}" width="80" height="80">
+										</div>
+										<div class="hot-kind-main-text fl">
+											<p>投保年龄： {$row.age}</p>
+											<p>保障期限： {$row.duration}</p>
+											<p>缴费方式： {$row.pay_type}</p>
+										</div>
+									</div>
+								</div>
+							</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--对比框-->
+
+<div id="comparison">
+	<div class="container">
+		<div class="comparison">
+			<div class="fptitle">
+				<span class="fptleft">产品对比</span>
+				<span class="fptright" id="closecomparison">X</span>
+			</div>
+			<div class="fpcon">
+				<div class="fpconleft"></div>
+				<div class="fpconright">
+					<div class="ftop">
+						<span class="fbut">
+	    							<a href="javascript:void(0);" >开始对比</a>
+	    						</span>
+					</div>
+					<div class="fwaste">
+						<a href="#" class="fwleft"></a>
+						<span class="flProduct">全部清空</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block} {block name='script'}
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/main.js"></script>
+<script type="text/javascript" src="__JS__/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__JS__/free.js"></script>
+<script>
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("提交成功，我们将尽快和您联系");
+		}
+	});
+	$().ready(function() {
+		$("#messageform").validate();
+	});
+</script>
+<script>
+	//找保险index页面
+	$(document).ready(function() {
+		var $category = $(".condition-choose4>li:gt(7):not(.condition-choose4>li:last)");
+		$category.hide();
+		$(".showB1").click(function() {
+			var show = $category.is(':hidden');
+			if(show) {
+				$category.show();
+				$(".showB1>a").html("<<显示部分")
+			} else {
+				$category.hide();
+				$(".showB1>a").html("全部公司>>")
+			}
+			return false;
+		})
+
+	})
+	$(document).ready(function() {
+		var $category1 = $(".condition-choose5>li:gt(6):not(.condition-choose5>li:last)");
+		$category1.hide();
+		var $category = $(".condition-choose5>li:gt(3):not(.condition-choose5>li:gt(5))");
+		$category.hide();
+		$(".showB2").click(function() {
+			var show = $category.is(':hidden');
+			if(show) {
+				$category.show();
+
+				$(".showB2>a").html("<<显示部分")
+			} else {
+				$category.hide();
+				$(".showB2>a").html("全部公司>>")
+			}
+
+			return false;
+
+		})
+
+	})
+</script>
+<script>
+	$(document).ready(function() {
+		$(".nav-main>li:eq(1)").addClass('indexon');
+	})
+</script>
+<script>
+	$(document).ready(function() {
+		var linkAll = $("ondition-choose4>li");
+	})
+</script>
+<!-- <script>
+	//找保险页面对比框的效果
+$(document).ready(function(){
+	$(".CheckChange").click(function(){
+ 	    var checkindex=$(".CheckChange").index(this);
+ 	        alert(checkindex)
+ 	    var checktitle=$(".kind-insure-text>p:eq(0)").eq(checkindex).text();
+
+ 	    alert(checktitle)
+		var zt=this.checked;
+		if(zt==true){
+			$(".comparison").css("display","block")
+			var oLogin=document.createElement("div");
+			oLogin.id="joinme";
+			oLogin.innerHTML="<div class='fpconlmain'><div class='fpconlist'><h2><a href='#'>{$row.name}</a></h2><dl style='width: auto;'><dt><img src='/static/home/images/insure/kind-big1.png' height='63px' width='70'></dt><dd><span class='fsb'>投保年龄：</span>0-60周岁</dd><dd><span class='fsb'>保险期限：</span>终身</dd></dl></div><img src='/static/home/images/insure/remove16x16.png' class='waste'></div></div>"
+			$(oLogin).prependTo($(".fpconleft"));
+			if($(".fpconleft>div").size()>3){
+				confirm("最多只能加三个保险产品哦");
+				var indexfp=$(".waste").index(this);
+			    $("#joinme").eq(indexfp).remove();
+			}
+			else{
+
+			}
+
+
+		}else{
+			var indexfp=$(".waste").index(this);
+			$("#joinme").eq(indexfp).remove();
+		}
+
+	    $(".waste").click(function(){
+				var indexfp=$(".waste").index(this);
+				$("#joinme").eq(indexfp).remove();
+
+	    })
+	})
+	$("#closecomparison").click(function(){
+		$(".comparison").css("display","none")
+	})
+
+	$(".flProduct").click(function(){
+		$(".fpconleft").children().remove()
+	})
+	$(".fbut>a").click(function(){
+
+		if($(".fpconleft>div").size()<2){
+			confirm("最少需要2个产品才能对比哦")
+		}else if($(".fpconleft>div").size()==2){
+			location.href="twoproduct.html"
+		}else if($(".fpconleft>div").size()==3){
+			location.href="threeproduct.html"
+		}else{
+			alert("错误")
+		}
+
+	})
+})
+</script> -->
+{/block}

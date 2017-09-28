@@ -1,0 +1,138 @@
+{extend name="public/base" /}
+{block name="style"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/chosen/chosen.css">
+{/block}
+{block name="body"}
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>保险方案列表</h2>
+	</div>
+	<div class="cf">
+		<div class="fl">
+            <a class="btn" href="{:url('add')}">新 增</a>
+            <button class="btn ajax-post" url="{:url('changeStatus?method=resumeInsurance')}" target-form="ids">启 用</button>
+            <button class="btn ajax-post" url="{:url('changeStatus?method=forbidInsurance')}" target-form="ids">禁 用</button>
+            <button class="btn ajax-post confirm" url="{:url('changeStatus?method=deleteInsurance')}" target-form="ids">删 除</button>
+        </div>
+
+        <!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="sleft">
+				<select class="chosen-select" style="width:260px;" name="company_id" >
+				<option value="0">--请选择--</option>
+                {foreach $companies as $k=>$row}
+                    <option value="{$k}" {if condition="$k eq $Request.get.company_id"}selected="selected"{/if}>{$row}</option>
+                {/foreach}
+                </select>
+			</div>
+			<div class="sleft">
+				<input type="text" name="name" class="search-input" value="{:input('name')}" placeholder="请输入用户昵称或者ID">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:url('index')}"><i class="btn-search"></i></a>
+			</div>
+		</div>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">ID</th>
+		<th class="">模板</th>
+		<th class="">名称</th>
+		<th class="">理由</th>
+		<th class="">公司</th>
+		<th class="">代理人</th>
+		<th class="">预算</th>
+		<th class="">年龄</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		{notempty name="_list"}
+		{volist name="_list" id="vo"}
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.plan_id}" /></td>
+			<td>{$vo.plan_id} </td>
+			<td><a href="{:url('InsurancePlan/temp?id='.$vo['plan_id'])}">[+]</a></td>
+			<td><a href="{:url('InsurancePlan/edit?id='.$vo['plan_id'])}">{$vo.title}</a></td>
+			<td>{$vo.reason}</td>
+			<td>{$companies[$vo.company_id]|default='未选择'}</td>
+			<td><span>{$agents[$vo.agent_id]|default='未选择'}</span></td>
+			<td><span>{$budgets[$vo.budget_id]|default='未选择'}</span></td>
+			<td><span>{$ages[$vo.age_id]|default='未选择'}</span></td>
+			<td>{$vo.status_text}</td>
+			<td>{eq name="vo.status" value="1"}
+				<a href="{:url('InsurancePlan/changeStatus?method=forbidInsurancePlan&id='.$vo['plan_id'])}" class="ajax-get">禁用</a>
+				{else/}
+				<a href="{:url('InsurancePlan/changeStatus?method=resumeInsurancePlan&id='.$vo['plan_id'])}" class="ajax-get">启用</a>
+				{/eq}
+                <a href="{:url('InsurancePlan/changeStatus?method=deleteInsurancePlan&id='.$vo['plan_id'])}" class="confirm ajax-get">删除</a>
+                </td>
+		</tr>
+		{/volist}
+		{else/}
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		{/notempty}
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+{/block}
+
+{block name="script"}
+	<script src="__PUBLIC__/static/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        var params = $('.search-form').find('select').serialize();
+
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        
+        params = params.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        params = params.replace(/^&/g,'');
+
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        if( url.indexOf('?')>0 ){
+            url += '&' + params;
+        }else{
+            url += '?' + params;
+        }
+
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:url('InsurancePlan/index')}');
+	</script>
+	<!-- //引入CHOSRNjs -->
+	<script src="__STATIC__/chosen/chosen.jquery.min.js"></script>
+	<!--调用CHOSEN -->
+	<script >
+	    $('.chosen-select').chosen({
+	        search_contains: true,
+	        no_results_text:"没有找到",
+	        placeholder_text : "My language message.",
+	        disable_search_threshold:10,
+
+
+	    });
+	</script>
+{/block}

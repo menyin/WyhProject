@@ -1,0 +1,216 @@
+{extend name="public/base" /}
+
+{block name="body"}
+<script type="text/javascript" src="__PUBLIC__/static/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>修改文章</h2>
+    </div>
+    <form action="" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">分类<span class="check-tips"></span></label>
+            <select id="category_f" style="width:150px;">
+                {foreach $cates as $row} 
+                    <option value="{$row.id}" {if condition="$row.id eq $nowCate.pid"}selected=""selected{/if}>{$row.title}</option>
+                {/foreach}
+            </select>
+            <select name="data[category_id]" id="category_id" style="width:150px;" required="required">
+                {foreach $nowChildCates as $row} 
+                    <option value="{$row.id}" {if condition="$row.id eq $article.category_id"}selected=""selected{/if}>{$row.title}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">保险代理人<span class="check-tips"></span></label>
+            <select name="agent_id" style="width:150px;">
+                <option value="0">--法保兜--</option>
+                {foreach $agents as $row} 
+                    <option value="{$row.agent_id}" {if condition="$row.agent_id eq $article.agent_id"}selected=""selected{/if}>{$row.name}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[title]" value="{$article.title}" />
+            </div>
+        </div>
+        <div  class="form-item">
+            <label class="item-label">当前地区<span class="check-tips"></span></label>
+            <select name="data[province_id]" id="province_id" style="width:150px;">
+                {foreach $provinces as $k=>$row} 
+                    <option value="{$k}" {if condition="$k eq $article.province_id"}selected=""selected{/if}>{$row}</option>
+                {/foreach}
+            </select>
+            <select name="data[city_id]"  id="city_id" style="width:150px;" >
+                {foreach $cities as $k=>$row} 
+                    <option value="{$row.id}" {if condition="$row.id eq $article.city_id"}selected=""selected{/if}>{$row.name}</option>
+                {/foreach}
+            </select>
+            <select name="data[area_id]"  id="area_id" style="width:150px;" >
+                {foreach $areas as $k=>$row} 
+                    <option value="{$row.id}" {if condition="$row.id eq $article.area_id"}selected=""selected{/if}>{$row.name}</option>
+                {/foreach}
+            </select>  
+        </div>
+        <div class="form-item">
+            <label class="item-label">参数设置<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" placeholder="浏览量" name="data[views]" value="{$article.views}" />
+                <input type="text" class="text input-large" placeholder="点赞" name="data[like]" value="{$article.like}" />
+                <input type="text" class="text" placeholder="不喜欢" name="data[dislike]" value="{$article.dislike}" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">SEO标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[seo_title]"  value="{$content.seo_title}" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">SEO关键词<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[seo_keywords]"  value="{$content.seo_keywords}"/>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">SEO简介<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[seo_description]"  value="{$content.seo_description}" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">文章简介<span class="check-tips"></span></label>
+            <label class="textarea">
+                <textarea name="data[desc]" id="" cols="30" rows="10">{$article.desc}</textarea>
+            </label>
+        </div>
+        <div class="controls">
+            <label class="item-label">封面</label>
+            <input type="file" id="cover">
+            <input type="hidden" name="data[cover]" id="cover_id" value="{$article.cover}"/>
+            <div class="upload-cover-box">
+            {notempty name="article['cover']"}
+                <div class="upload-cover"><img src="{$article.cover}"/></div>
+            {/notempty}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">文章内容<span class="check-tips"></span></label>
+            </label>
+            <label class="textarea">
+            <textarea name="data[content]">{$content.content}</textarea>
+            {:hook('adminArticleEdit', array('name'=>'data[content]','value'=>2))}
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="item-label">发布时间<span class="check-tips">（不选，默认当前）</span></label>
+            <div class="controls">
+                <input type="text" onclick="layui.laydate({elem: this, istime: false, format: 'YYYY-MM-DD hh:mm:ss'})" name="data[publish_time]"  value="{$article.publish_time|time_format}" class="text input-large" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">头条<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[headline]" {if condition="$article.headline eq 1"}checked="checked"{/if} > 是
+                <input type="radio" class="radio" value="0" name="data[headline]" {if condition="$article.headline eq 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">热门<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[hot]" {if condition="$article.hot eq 1"}checked="checked"{/if} > 是
+                <input type="radio" class="radio" value="0" name="data[hot]" {if condition="$article.hot eq 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">推荐<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[recommend]" {if condition="$article.recommend eq 1"}checked="checked"{/if} > 是
+                <input type="radio" class="radio" value="0" name="data[recommend]" {if condition="$article.recommend eq 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">状态<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" name="data[status]" value="1" {if condition="$article.status eq 1"}checked="checked"{/if} />发布 
+                <input type="radio" name="data[status]" value="2" {if condition="$article.status eq 2"}checked="checked"{/if} />待审
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+{/block}
+
+{block name="script"}
+<script type="text/javascript">
+    $('#time-publish').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii:ss',
+        language:"zh-CN",
+        minView:4,
+        autoclose:true
+    });
+
+    //导航高亮
+    highlight_subnav('{:url('AgentKeywords/index')}');
+</script>
+<script>
+$("#category_f").change(function(){
+    var pid=$(this).val();
+    var urlCate = "{:url('Category/getCategoryByPid')}?id="+pid;
+
+    $.ajax({
+        url:urlCate,
+        Type:"GET",
+        data:"",
+        dataType:"json",
+        success:function(data){
+            $("#category_id").html('');
+            $.each(data, function(i,row) {
+                var option=$("<option></option>");
+                $(option).val(row.id);
+                $(option).html(row.title);
+
+                $("#category_id").append(option);
+            });
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+    //上传图片
+    /* 初始化上传插件 */
+    $("#cover").uploadify({
+        "height"          : 30,
+        "swf"             : "__PUBLIC__/static/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "上传图片",
+        "uploader"        : "{:url('File/uploadPicture',array('session_id'=>session_id()))}",
+        "width"           : 120,
+        'removeTimeout'   : 1,
+        'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+        "onUploadSuccess" : uploadPicture,
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+    });
+    function uploadPicture(file, data){
+        var data = $.parseJSON(data);
+        var src = '';
+        if(data.status){
+            src = data.url || '__ROOT__' + data.path;
+            $("#cover_id").val(src);
+            $("#cover").parent().find('.upload-cover-box').html(
+                '<div class="upload-cover"><img src="' + src + '"/></div>'
+            );
+        } else {
+            updateAlert(data.info);
+            setTimeout(function(){
+                $('#top-alert').find('button').click();
+                $(that).removeClass('disabled').prop('disabled',false);
+            },1500);
+        }
+    }
+</script>
+{/block}

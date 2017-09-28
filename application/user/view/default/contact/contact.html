@@ -1,0 +1,33 @@
+{extend name="public/base" /}
+
+{block name="body"}
+<div>
+    <header class="header-article-list">
+        <div class="contact-left">联系我们</div>
+        <div class="contact-right">
+            <a href="index.html">首页 </a>&#62;<a href="#">联系我们</a>
+        </div>
+    </header>
+
+    <main class="contact">
+        <iframe src="{:url('user/About/map')}?id={$agentId|default=3}" width="636" height="378" frameborder="0" scrolling="no"></iframe>
+        <ul>
+            <li>
+                <span><img src="__IMG__/user/contact1.png"/></span>
+                <h2>联系我们</h2>
+                <p>电话:{$agentInfo.phone}</p>
+            </li>
+            <li>
+                <span><img src="__IMG__/user/contact2.png"/></span>
+                <h2>公司地址</h2>
+                <p>地址:</p>
+            </li>
+            <li>
+                <span><img src="__IMG__/user/contact3.png"/></span>
+                <h2>电子邮箱</h2>
+                <p>邮箱:{$agentInfo.email}</p>
+            </li>
+        </ul>
+    </main>
+</div>
+{/block}

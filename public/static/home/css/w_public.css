@@ -1,0 +1,21 @@
+.w1200{width: 1200px;margin: 0 auto;}
+a{color: #ff5400;}
+.container{width: 1200px;margin: 0 auto;}
+/*公共导航*/
+#topNav{width: 100%;background: #ff5400;color:#fff;}
+#topNav .container .nav-pills{width: 1200px;height: 15px;}
+#topNav .container .nav-pills > li > a{color: #fff;height: 20px;line-height: 25px;margin-top: 0px;margin-bottom: 0px;padding-bottom: 12px;}
+#topNav .container .nav-pills > .active > a{background-color: #c44202;border-radius: 0px;}
+#topNav .container .nav-pills > .active:hover{background-color: #c44202;}
+/*次导航*/
+#subNav .container .breadcrumb{background-color: #f8cebd;border-radius: 0px;}
+#subNav .container .breadcrumb > .active{color: #71645e}
+#subNav .container .breadcrumb > li{text-shadow:none;display: inline-block;}
+/*新闻列表*/
+#newsMain .newsMain_left{float:left;width: 860px;margin-right:40px;}
+#newsMain .newsMain_right{float:right;width: 300px;}
+#newsMain .newsMain_left .newsCenter{margin:inherit;}
+#newsMain .newsMain_left h3{font-size: 22px;font-weight: bold;text-align: center;line-height: 0px;}
+#newsMain .newsMain_left .v_center{text-indent:2em;padding:10px 0px;margin-right: 0px;margin-bottom: 0px;}
+#newsMain .newsMain_left .v_image{max-width: 100%;text-align: center;display: block;}
+

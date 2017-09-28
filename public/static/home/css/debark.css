@@ -1,0 +1,102 @@
+#header{
+	height: 76px;
+	margin: 10px 0;
+}
+.loag_top{
+	float: right;
+	width: 324px;
+	height: 50px;
+	line-height: 60px;
+}
+.tel{
+	color: #FF5400;
+}
+.main{
+	height: 450px;
+	background-color: #FFFFFF;
+	width: 1180px;
+	padding-left: 60px;
+}
+.main-right{
+	width: 500px;
+	padding-top: 78px;
+}
+.main-right>form>p{
+	font-size: 14px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 40px;
+}
+.main-right>form>div>p{
+	font-size: 14px;
+	height: 50px;
+}
+.main-right>form>div>p>input{
+	    width: 211px;
+    height: 23px;
+    border: #c7c6c6 1px solid;
+    display: inline-block;
+    margin-left: 10px;
+}
+.main-right>form>div>p>input.SubTn{
+	background-color: #FF5400;
+    width: 129px;
+    height: 35px;;
+    border: 0;
+    border-radius: 5px;
+    color: #FFFFFF;
+    margin-left: 53px;
+}
+.debark_b{
+	border-top: #999999 1px solid;
+	    width: 335px;
+    height: auto;
+    overflow: hidden;
+    padding-top: 10px;
+}
+.debark_b p{
+	    line-height: 23px;
+    color: #c7c6c6;
+    text-indent: 30px;
+    padding-left: 10px;
+}
+.debark_b>p>span{
+	color: #FF5400;
+}
+.debark_b>p>span>a{
+	text-decoration: underline;
+	font-size: 12px;
+	color: #FF5400;
+}
+/*
+ 尾部CSS
+ * */
+.company-footer{
+	margin-top: 50px;
+	text-align: center;
+	font-size:13px;
+}
+.company-footer>p{
+	text-align: center;
+}
+.copyright span{
+	line-height: 25px;
+}
+.copyright span>img{
+	border: 0;
+    display: inline;
+    float: none;
+}
+.links{
+	margin-bottom: 5px;
+}
+.pos{
+	padding: 0 10px 0 10px;
+    line-height: 38px;
+    background: #ffe5e3;
+}
+.error {
+    color: red;
+    font-size: 14px; 
+    display: block;
+}

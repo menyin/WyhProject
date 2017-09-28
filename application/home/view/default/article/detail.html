@@ -1,0 +1,69 @@
+{extend name="public/base" /}
+{block name="style"}
+		<link rel="stylesheet" href="__CSS__/product-main.css" />
+{/block}
+
+
+{block name="body"}
+		<div id="main">
+			<div class="container">
+				<div class="main">
+
+					<p><a href="#">首页</a>»
+					   <a href="#">{$article.f_category}</a>»
+					   <a href="#">{$article.c_category}</a>
+					</p>
+
+
+					<div class="main-main">
+						<div class="main-left">
+						   <div class="ad">
+								   <a href="{:url('/home/message/index')}">
+				    					<img src="__IMG__/public/ad2.png" height="80" width="878"/>
+				    			   </a>
+							</div>
+							<h1>{$article.title}</h1>
+							<p class="time">
+								发布日期:<span>{$article.publish_time|time_format}</span>
+								来源：<span>{$article.source}</span>
+								浏览次数：<span>{$article.views}</span>
+							</p>
+							{$article.content}
+						</div>
+						<!--热门列表-->
+						<div class="main-right">
+							<div class="main-right-list">
+								<div class="tit">保险学堂</div>
+								<div class="title-list">
+									<ul>
+									{foreach $school as $k=>$row}
+										<li><a href="{:url('home/Article/detail', ['id'=>$k])}" target="_blank" title="{$row.title}">{$row.title}</a></li>
+									{/foreach}
+									</ul>
+								</div>
+							</div>
+
+							<div class="main-right-list">
+								<div class="tit">最新资讯</div>
+								<div class="title-list">
+									<ul>
+									{foreach $school as $k=>$row}
+										<li><a href="{:url('home/Article/detail', ['id'=>$k])}" target="_blank" title="{$row.title}">{$row.title}</a></li>
+									{/foreach}
+									</ul>
+								</div>
+							</div>
+
+							<div class="main-right-list">
+						    	<a href="{:url('/home/message/index')}">
+								  <img src="__IMG__/insure/pdf123.jpg">
+								</a>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+{/block}

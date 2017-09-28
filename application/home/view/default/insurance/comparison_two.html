@@ -1,0 +1,106 @@
+{extend name="public/base" /}
+{block name="style"}
+		<link rel="stylesheet" href="__CSS__/twoproduct.css" />
+{/block}
+
+
+{block name="body"}
+
+	    <!--俩个产品对比-->
+	    <div id="contrast">
+	    	<div class="container">
+	    		<div class="contrast">
+	    			<div class="contrast-top">
+	    				<span class="selet">产品对比</span>
+
+	    				<div class="share">
+							<!-- JiaThis Button BEGIN -->
+								<div class="jiathis_style">
+									<a class="jiathis_button_qzone"></a>
+									<a class="jiathis_button_tsina"></a>
+									<a class="jiathis_button_tqq"></a>
+									<a class="jiathis_button_weixin"></a>
+									<a class="jiathis_button_renren"></a>
+									<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+									<!--<a class="jiathis_counter_style"></a>-->
+								</div>
+
+								<!-- JiaThis Button END -->
+
+	    			    </div>
+
+	    			</div>
+	    			<!--开始对比-->
+	    			<div class="contrast-share">
+	    				<table width="1180" border="0" cellpadding="0" cellspacing="0">
+							  <tbody>
+							    <tr>
+							      <td width="163" height="105">产品名称</td>
+							      <td width="512">
+							      	<p>华夏常青树（2016）（健康人生）</p>
+							      	<p><a href="#">我要购买</a></p>
+							      </td>
+							      <td width="504">
+							      	<p>华夏常青树（2016）（健康人生）</p>
+							      	<p><a href="#">我要购买</a></p>
+							      </td>
+							    </tr>
+							    <tr>
+							      <td height="71">保险公司</td>
+							      <td>华夏人寿保险股份有限公司</td>
+							      <td>中国平安人寿保险股份有限公司</td>
+							    </tr>
+							    <tr>
+							      <td height="71">适合人群</td>
+							      <td>个人</td>
+							      <td>个人少儿</td>
+							    </tr>
+							    <tr>
+							      <td height="71">投保年龄</td>
+							      <td>0-60周岁</td>
+							      <td>0-17周岁</td>
+							    </tr>
+							    <tr>
+							      <td height="71">保险期限</td>
+							      <td>终身</td>
+							      <td>终身</td>
+							    </tr>
+							    <tr>
+							      <td height="71">缴费方式</td>
+							      <td>年交</td>
+							      <td>年交</td>
+							    </tr>
+							    <tr>
+							      <td height="131">保障范围</td>
+							      <td>身故保险金 全残保险金 重大疾病保险金 疾病终末期保险金 轻症疾病豁免保费轻症保险金</td>
+							      <td>身故保险金 重大疾病保险 金少儿重大疾病保险金 轻症疾病保险金 意外身故保险金 意外伤残保险金 自驾车或乘坐公共交通意外伤害保险金 重大疾病陪护保险金 少儿特定重疾陪护保险金 特定轻度重疾陪护保险金</td>
+							    </tr>
+							    <tr>
+							      <td height="71">保&nbsp;&nbsp;费</td>
+							      <td>￥按需求定制;</td>
+							      <td>￥按需求定制;</td>
+							    </tr>
+							  </tbody>
+						</table>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!--俩个产品对比结束-->
+	    <!--广告位-->
+	    <div id="ad">
+	    	<div class="container">
+	    		<div class="ad">
+	    			This is ad
+	    		</div>
+	    	</div>
+	    </div>
+{/block}
+{block name='script'}
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<script>
+	$(document).ready(function(){
+		  $(".nav-main>li:eq(1)").addClass('indexon');
+	})
+</script>
+{/block}

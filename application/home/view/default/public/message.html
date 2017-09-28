@@ -1,0 +1,199 @@
+{extend name="public/base" /}
+
+{block name="style"}
+		<link href="__CSS__/free.css" rel="stylesheet">
+{/block}
+
+{block name="body"}
+    <div class="FreeIMG">
+		<!-- 此处为背景大图 -->
+
+	</div>
+	<div id="FreeMade">
+		<div class="container">
+			<div class="FreeMade">
+				<form action="" method="post" id="">
+					<div class="free_main">
+					{if condition="$agentId > 0"}
+						<!--预约设计师-->
+						<div class="free_main_choose">
+							<span>预约设计师：</span>
+							<label>
+								{$agent.name}
+							</label>
+						</div>
+					{/if}
+						<input type="hidden" name="data[agent_id]" value="{$agentId}" />
+						<!--性别-->
+						<div class="free_main_choose">
+							<span>您的性别：</span>
+							<label>
+								<input type="radio" name="data[sex]" value="1" checked="checked" />男
+							</label>
+							<label>
+								<input type="radio" name="data[sex]" value="2" />女
+							</label>
+							<label>
+								<input type="radio" name="data[sex]" value="3" />保密
+							</label>
+						</div>
+						<!--出生年月-->
+						<div class="free_main_choose">
+							<span>出生年月：</span>
+							<span id="date">
+								<select name="data[year]" id="year">
+									<option value="">选择年份</option>
+								</select>
+								<select name="data[month]" id="month">
+									<option value="">选择月份</option>
+								</select>
+								<select name="data[day]" id="days" class="day">
+									<option value="">选择日期</option>
+								</select>
+							</span>
+						</div>
+						<!--居住地-->
+						<div class="free_main_choose">
+							<span>现居住地：</span>
+							       <select name="data[province_id]" id="province_id" style="width:150px;">
+						                {foreach $provinces as $k=>$row}
+						                    <option value="{$k}">{$row}</option>
+						                {/foreach}
+						            </select>
+						            <select name="data[city_id]"  id="city_id" style="width:150px;" >
+						                <option>--请选择--</option>
+						            </select>
+						            <select name="data[area_id]"  id="area_id" style="width:150px;" >
+						                <option value="0">--请选择--</option>
+						            </select>
+						</div>
+						<!--保障需求-->
+						<div class="free_main_choose">
+							<span>保险需求：</span>
+							{foreach $needInsurances as $k=>$v}
+							<span><input type="checkbox" value="{$k}" name="data[insurance][]">{$v}</span>
+							{/foreach}
+						    <span class="tips">(可多选)</span>
+						</div>
+						<!--文字说明-->
+						<div class="free_main_choose notes">
+							填写联系方式，免费获取专业推荐
+						</div>
+						<!--称呼-->
+						<div class="free_main_choose">
+							<span>您的称呼：</span>
+							<input type="text" placeholder="必填" name="data[name]" class="freeN"/>
+						</div>
+						<!--手机号码-->
+						<div class="free_main_choose">
+							<span>手机号码：</span>
+							<input type="text" placeholder="必填" name="data[mobile]" id="mobilephone" class="freeN"/>
+						</div>
+							<!--验证码-->
+		<!-- 				<div class="free_main_choose">
+							<span>短信验证码：</span>
+							<input type="text" placeholder="必填" name="data[code]" id="code" class="freeN"/> <input type="button" value="获取验证码" onclick='time(this)' class="Getyzm"/>
+						</div> -->
+						<div class="free_main_choose contac">
+							<input type="checkbox" value="1" name="data[need]" checked="checked">安排保险人联系我
+						</div>
+						<div class="free_main_choose">
+							<input type="submit" value="完成定制" class="finir"/>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+{/block}
+{block name="script"}
+
+<!-- <script type="text/javascript" src="__JS__/GetYzm.js" ></script> -->
+<script type="text/javascript" src="__JS__/jquery.js" ></script>
+<script type="text/javascript" src="__JS__/Yearselect.js"></script>
+<!-- <script type="text/javascript" src="__JS__/jquery.citys.js" ></script> -->
+<script type="text/javascript" src="__JS__/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="__JS__/free.js" ></script>
+<!--调用时间选择-->
+	<script type="text/javascript">
+		window.onload=function(){
+			$("#date").selectDate()
+			$("#days").focusout(function(){
+				var year = $("#year option:selected").html()
+				var month = $("#month option:selected").html()
+				var day = $("#days option:selected").html()
+				console.log(year+month+day)
+			})
+		}
+	</script>
+<!--voildate-->
+<script>
+		$.validator.setDefaults({
+		    submitHandler: function() {
+		      alert("提交成功，我们将尽快和您联系");
+		    }
+		});
+		$().ready(function() {
+		    $("#Free").validate();
+		});
+</script>
+<script>
+	$(document).ready(function(){
+		  $(".nav-main>li:eq(1)").addClass('indexon');
+	})
+</script>
+
+
+<script>
+    $("#province_id").change(function(){
+    var province_id=$(this).val();
+    var urlCity = "{:url('Area/getCities')}?id="+province_id;
+
+    $.ajax({
+        url: urlCity,
+        Type:"GET",
+        data:"",
+        dataType:"json",
+        success:function(data){
+            var option1=$("<option></option>");
+            $(option1).val("0");
+            $(option1).html("--请选择--");
+            $("#city_id").html('');
+            $("#area_id").html(option1);
+
+            $.each(data, function(i,row) {
+                var option=$("<option></option>");
+                $(option).val(row.id);
+                $(option).html(row.name);
+
+                $("#city_id").append(option);
+            });
+        }
+
+    });
+});
+
+$("#city_id").change(function(){
+    var city_id=$(this).val();
+    var urlArea = "{:url('Area/getAreas')}?id="+city_id;
+
+    $.ajax({
+        url:urlArea,
+        Type:"GET",
+        data:"",
+        dataType:"json",
+        success:function(data){
+            $("#area_id").html('');
+            $.each(data, function(i,row) {
+                var option=$("<option></option>");
+                $(option).val(row.id);
+                $(option).html(row.name);
+
+                $("#area_id").append(option);
+            });
+        }
+    });
+});
+</script>
+{/block}

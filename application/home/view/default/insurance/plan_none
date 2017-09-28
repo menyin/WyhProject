@@ -1,0 +1,108 @@
+{extend name="public/base" /}
+{block name="style"}
+
+        <link rel="stylesheet" href="__CSS__/agent.css">
+        <link rel="stylesheet" href="__CSS__/text_list.css" />
+        <link rel="stylesheet" href="__CSS__/product_list.css" />
+    <style>
+        .ad{
+            height:100px;
+            margin-bottom:10px;}
+        .text_main{
+            background-image:url(../images/public/nop.png);
+            background-size:cover;
+        }
+    </style>
+{/block}
+
+{block name="body"}
+        <div id="place">
+            <div class="container">
+                <div class="place">
+                    <p>
+                        <span>了解保险</span>-<span>保险方案列表</span>-<span id="titre">意外险</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div class="container">
+                <div class="main">
+                    <div class="title">
+                        <ul class="title_list">
+                        {foreach $personal as $row}
+                        <li {if condition="$row.id eq $Request.get.personal_id"}class="on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+                        {/foreach}
+                        </ul>
+                    </div>
+                    <div class="product_wrap">
+                        <div class="product show">
+                            <div class="condition">
+                                    <ul class="condition-choose1">
+                                        <span>投保年龄：</span>
+                                        {foreach $age as $row}
+                                        <li {if condition="$row.id eq $Request.get.age_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+                                        {/foreach}
+                                    </ul>
+                                    <ul class="condition-choose2">
+                                        <span>选择价格：</span>
+                                        {foreach $budget as $row}
+                                        <li {if condition="$row.id eq $Request.get.budget_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+                                        {/foreach}
+                                    </ul>
+                                    <ul class="condition-choose3">
+                                        <span>热门公司：</span>
+                                        {foreach $companies as $row}
+                                        <li {if condition="$row.id eq $Request.get.company_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+                                        {/foreach}
+                                        <span class="condition-span showA1"><a href="#"> 全部公司>> </a></span>
+                                    </ul>
+                            </div>
+                            <div class="ad">
+                                    <a href="{:url('home/Message/index')}">
+                                         <img src="__IMG__/public/ad1.png" height="100" width="1180">
+                                     </a >
+                            </div>
+
+                            {notempty name="$plans"}
+                            {foreach $plans as $row}
+                                <div class="text_main">
+
+                                </div>
+                            {/foreach}
+                            {/notempty}
+
+                        </div>
+                        <!--分页-->
+                        <div class="fenye">
+                                 <p class="fy">
+                                     {$pager}
+                                 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{/block}
+{block name='script'}
+<script type="text/javascript" src="__JS__/jquery.js" ></script>
+<script type="text/javascript" src="__JS__/text-list.js" ></script>
+<script>
+$(document).ready(function(){
+        var $category=$(".condition-choose3>li:gt(4):not(.condition-choose2>li:last)");
+        $category.hide();
+        $(".showA1").click(function(){
+            var show=$category.is(':hidden');
+            if(show){
+                $category.show();
+                $(".showA1>a").html("<<显示部分")
+            }else{
+                $category.hide();
+                $(".showA1>a").html("全部公司>>")
+            }
+            return false;
+        })
+
+ })
+</script>
+{/block}

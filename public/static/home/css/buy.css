@@ -1,0 +1,61 @@
+#buy{
+	margin-top: 50px;
+}
+.buy{
+	background-color: #FFFFFF;
+	
+}
+.title{
+	border-bottom: 1px dashed #999999;
+}
+.title>p{
+	font-size: 18px;
+	letter-spacing: 1px;
+	padding: 10px 18px;
+}
+.title>p>span:nth-of-type(1){
+	font-size: 20px;
+	color: #FF5400;
+	font-weight: bold;
+}
+.title>p>span:nth-of-type(2){
+	font-size: 16px;
+}
+.form1 {
+    font-size: 16px;
+    margin-left: 25px;
+}
+.form2{
+	height: 348px;
+	width: 530px;
+	background-color: #000000;
+}
+.buy_main{
+	height: 390px;
+	padding-top: 20px;
+	padding-right: 50px;
+}
+._citys {
+    top: 42%;
+    left: 20%;
+}
+.form1> form >ul>li {
+    height: 40px;
+    margin-bottom: 18px;
+}
+.form1> form >ul>li:nth-of-type(6)>input{
+	margin-top: 0;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    display: block;
+    width: 166px;
+
+}
+.ad{
+	height: 100px;
+	width: 1180px;
+	background-color: #FFFFFF;
+	margin-top: 25px;
+}

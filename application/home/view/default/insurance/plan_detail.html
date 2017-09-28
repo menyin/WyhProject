@@ -1,0 +1,211 @@
+{extend name="public/base" /}
+{block name="style"}
+ 	    <link rel="stylesheet" href="__CSS__/gongyong.css" />
+ 	    <link rel="stylesheet" href="__CSS__/product1.css" />
+{/block}
+{block name="body"}
+	    <!--main-->
+	    <div id="main">
+	    	<div class="container">
+	    		<div class="main">
+	    			<p>您在这里：保险方案 > <span>{$plan.title}</span></p>
+	    			<div class="main-bt">
+	    				<div class="main-bt-left fl">
+	    				    <div class="main-bt-left-1 fl">
+		    					<p><img src="{$plan.icon|default='/static/home/images/insure/p1.png'}" height="268" width="268"></p>
+		    					<p>由保险代理人&nbsp;<span>{$agent.name}</span>&nbsp;设计</p>
+		    					<p>
+		    						<span>{$plan.province_name}</span>
+		    						<span>{$plan.city_name}</span>
+		    						<span>{$plan.company}</span>
+		    					</p>
+		    				    <p>经保监会认证</p>
+	    				    </div>
+
+	    				    <div class="main-bt-left-2 fl">
+	    				   		<p>{$plan.title}</p>
+	    				   		<p>最高保额: <span>{$plan.max}</span></p>
+								<p>年       缴 : <span>{$plan.pay_year}元</span></p>
+								<p>投保对象 :
+									<span>24岁 </span>
+									<span>男 </span>
+									<span>{$plan.suitable}</span>
+								</p>
+								<p>侧重险种 : <span>意外险</span></p>
+	    				   		<p>推荐理由：{$plan.reason}</p>
+	    				   		<p>
+	    				   		{notempty name="$plan.contains"}
+							    {foreach $plan.contains as $row}
+								    <span class="tag">{$row.name}<br>{$row.price}</span>
+							    {/foreach}
+							    {/notempty}
+	    				   		</p>
+	    				   		<p>
+	    				   			<a href="{:url('/home/message/index')}" target="_blank">我要购买</a>
+	    				   			<a href="{:url('/home/message/index')}" target="_blank">立即投保</a>
+	    				   		</p>
+	    				   		<p>
+	    				   			<a href="#">结果不满意，马上定制专属你的保险计划>></a>
+	    				   		</p>
+	    				    </div>
+	    				   	<!--免费定制-->
+
+
+	    				</div>
+	    			    	<div class="window" id="window" >
+                                <a href="{:url('/home/message/index')}">
+		    					    <img src="__IMG__/public/Free_Made.gif"/>
+		    			        </a>
+		    				</div>
+	    			</div>
+
+	    		</div>
+	    	</div>
+	    </div>
+	    <!--ad-->
+		<div id="id">
+			<div class="container">
+				<div class="id">
+					  <a href="{:url('/home/message/index')}" target="_blank">
+						<img src="__IMG__/public/ad1.png" height="130" width="1180">
+					  </a>
+				</div>
+			</div>
+		</div>
+	    <!--具体信息-->
+	    <div id="guarantee">
+	    	<div class="container">
+	    		<div class="guarantee">
+	    			<div class="guarantee-top">
+	    				<span>提供保障</span>
+	    				<span>查看单个产品的保险责任>></span>
+	    			</div>
+
+	    			<table width="1125" border="0" cellpadding="0" cellspacing="0">
+					  <tbody>
+					    <tr>
+					      <th width="230" height="70" scope="col">保险责任 </th>
+					      <th width="232" scope="col"> 最高保额（元）</th>
+					      <th width="662" colspan="2" scope="col">说明 </th>
+					    </tr>
+					    {notempty name="$plan.contains"}
+						{foreach $plan.contains as $k=>$row}
+					    <tr>
+					      <td height="67">{$row.name|default=''} </td>
+					      <td> {$row.price|default=''}</td>
+					      <td colspan="1">{$row.desc|default=''} </td>
+					    </tr>
+					    {/foreach}
+					    {/notempty}
+
+					  </tbody>
+					</table>
+
+	    			<p>包含产品:</p>
+
+	    			<div class="table1">
+	    				<table width="1124" border="0" cellpadding="0" cellspacing="0">
+							  <tbody>
+							    <tr>
+							      <th width="279" height="40" scope="col">险种产品 </th>
+							      <th width="279" scope="col">保险期限 </th>
+							      <th width="279" scope="col">缴费期限 </th>
+							      <!-- <th width="286" scope="col">年缴保费（元） </th> -->
+							      <th width="286" scope="col">缴费方式 </th>
+							    </tr>
+							    <tr>
+							      <td height="40">{$insurance.name} </td>
+							      <td>{$insurance.age}岁  </td>
+							      <td>{$insurance.duration}  </td>
+							      <td>{$insurance.pay_type}  </td>
+							    </tr>
+							  </tbody>
+							</table>
+	    			</div>
+
+	    			<p>{$plan.title}</p>
+
+	    			<p>{$plan.desc}</p>
+	    			<p><a href="tencent://message/?uin={1992355937}&Site=&Menu=yes" >我要咨询</a>
+	    			   <a href="{:url('/home/message/index')}" target="_blank">立即投保></a>
+	    			</p>
+
+	    			<p><a href="{:url('/home/Insurance/plan')}">更多保险方案相似保险计划书>></a></p>
+	    		</div>
+	    	</div>
+	    </div>
+		<!--留言板-->
+		<div id="board">
+			<div class="container">
+				<div class="board">
+					<div class="board-right fr">
+						<p>我要留言</p>
+						<div class="board-right-bt">
+							<form action="" method="get" id="leaveWord">
+								<ul>
+									<li>
+										<span>
+											<b  class="xin">*</b>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言：
+										</span>
+										<span><textarea placeholder="必填，请输入留言内容" name="word"></textarea></span>
+									</li>
+									<li>
+										<span>
+											<b  class="xin">*</b>您的姓名：
+										</span>
+										<span><input type="text" placeholder="必填，请输入您的姓名" name="username"></span>
+									</li>
+									<li>
+										<span>
+											<b  class="xin">*</b>手机号码：
+										</span>
+										<span><input type="text" placeholder="必填，请输入您的手机号码" name="tel"></span>
+									</li>
+									<li>
+										<span>
+											<b  class="xin">*</b>所属地区：
+										</span>
+										<select name="province_id" id="province_id" >
+											<option value="0">--请选择--</option>
+							                {foreach $provinces as $k=>$row}
+							                    <option value="{$k}" {if condition="$k eq $areaInfo.province_id"  class="dept_select"}selected=""selected{/if}>{$row}</option>
+							                {/foreach}
+							            </select>
+							            <select name="city_id"  id="city_id"  >
+											<option value="0">--请选择--</option>
+							                {foreach $cities as $k=>$row}
+							                    <option value="{$row.id}" {if condition="$row.id eq $areaInfo.city_id"}selected=""selected{/if}>{$row.name}</option>
+							                {/foreach}
+							            </select>
+							            <select name="area_id"  id="area_id"  >
+											<option value="0">--请选择--</option>
+							                {foreach $areas as $k=>$row}
+							                    <option value="{$row.id}">{$row.name}</option>
+							                {/foreach}
+					                    </select>
+									</li>
+									<li><input type="submit" value="提交"></li>
+								</ul>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="__JS__/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="__JS__/free.js" ></script>
+<script>
+		$.validator.setDefaults({
+		    submitHandler: function() {
+		      alert("提交成功，我们将尽快和您联系");
+		    }
+		});
+		$().ready(function() {
+		    $("#leaveWord").validate();
+		});
+</script>
+
+{/block}

@@ -1,0 +1,71 @@
+
+{extend name="public/base" /}
+{block name="style"}
+<link rel="stylesheet" href="__CSS__/user/insure.css" />
+{/block}
+{block name="body"}
+		<div id="condition">
+		 	<div class="container">
+		 		<div class="condition">
+		 			<ul class="condition-choose1">
+		 				<span>人身保险：</span >
+		 				{foreach $personal as $row}
+		 				<li {if condition="$row.id eq $Request.get.personal_id"}class="condition-on"{/if}><a href="{$row.link}&id={$agentId}">{$row.name}</a></li>
+		 				{/foreach}
+		 			</ul>
+		 			<ul class="condition-choose2">
+		 				<span>投保对象：</span>
+		 				{foreach $group as $row}
+		 				<li {if condition="$row.id eq $Request.get.group_id"}class="condition-on"{/if}><a href="{$row.link}&id={$agentId}">{$row.name}</a></li>
+		 				{/foreach}
+		 			</ul>
+<!-- 		 			<ul class="condition-choose3">
+		 				<span>保险公司：</span>
+		 				{foreach $companies as $row}
+		 				<li {if condition="$row.id eq $Request.get.company_id"}class="condition-on"{/if}><a href="{$row.link}&id={$agentId}">{$row.name}</a></li>
+		 				{/foreach}
+
+		 			</ul>
+ -->		 			<ul class="condition-choose4">
+		 				<span>财产保险：</span>
+		 				{foreach $property as $row}
+		 				<li {if condition="$row.id eq $Request.get.property_id"}class="condition-on"{/if}><a href="{$row.link}&id={$agentId}">{$row.name}</a></li>
+		 				{/foreach}
+		 			</ul>
+
+		 		</div>
+		 		<div class="condition-main">
+		 			<img src="__IMG__/user/NONO.png">
+		 		</div>
+		 	</div>
+		 </div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script>
+$(document).ready(function(){
+	$(document).ready(function(){
+	$(".condition-choose1>li").click(function(){
+		var liindex1=$(".condition-choose1>li").index(this);
+		$(this).addClass("condition-on").siblings(".condition-choose1>li").removeClass("condition-on");
+	})
+	$(".condition-choose2>li").click(function(){
+		var liindex1=$(".condition-choose2>li").index(this);
+		$(this).addClass("condition-on").siblings(".condition-choose2>li").removeClass("condition-on");
+	})
+	$(".condition-choose3>li").click(function(){
+		var liindex1=$(".condition-choose3>li").index(this);
+		$(this).addClass("condition-on").siblings(".condition-choose3>li").removeClass("condition-on");
+	})
+	$(".condition-choose4>li").click(function(){
+		var liindex1=$(".condition-choose4>li").index(this);
+		$(this).addClass("condition-on").siblings(".condition-choose4>li").removeClass("condition-on");
+	})
+//	$(".condition-choose5>li").click(function(){
+//		var liindex1=$(".condition-choose5>li").index(this);
+//		$(this).addClass("condition-on").siblings(".condition-choose5>li").removeClass("condition-on");
+//	})
+})
+})
+</script>
+{/block}

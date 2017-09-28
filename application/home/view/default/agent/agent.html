@@ -1,0 +1,335 @@
+{extend name="public/base" /}
+
+{block name="style"}
+	<link rel="stylesheet" href="__CSS__/agent.css">
+{/block}
+
+{block name="body"}
+		 <!-- 头部区域结束-->
+		 <!-- 选择条件区域区域开始-->
+		 <div id="condition">
+		 	<div class="container">
+		 		<div class="condition">
+		 			<ul class="condition-choose1">
+		 				<span>选择地区：</span >
+		 				{foreach $area as $row}
+		 				<li {if condition="$row.id eq $Request.get.area_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+		 				{/foreach}
+		 			</ul>
+		 			<ul class="condition-choose2">
+		 				<span>热门公司：</span>
+		 				{foreach $companies as $row}
+		 				<li {if condition="$row.id eq $Request.get.company_id"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+		 				{/foreach}
+		 				<span class="condition-span showA1"><a href="#"> 全部公司>> </a></span>
+		 			</ul>
+		 			<ul class="condition-choose3">
+		 				<span>擅长险种：</span>
+		 				{foreach $categories as $row}
+		 				<li {if condition="$row.id eq $Request.get.category_id"}class="condition-on"{/if} class="abc"><a href="{$row.link}">{$row.name}</a></li>
+		 				{/foreach}
+		 				<span class="condition-span showA2"><a href="#"> 展开全部>> </a></span>
+		 			</ul>
+		 		</div>
+		 	</div>
+		 </div>
+		 <!-- 选择条件区域区域结束-->
+		 <!--保险精英区域-->
+		 <div id="elite">
+		 	<div class="container">
+		 		<div class="elite">
+		 			<div class="elite-top">
+		 				<div class="elite-top-left fl">
+		 					<span>保险精英</span>
+		 					&nbsp;&nbsp;
+		 					<span>以下显示均为法宝兜已认证会员，其资料真实可靠</span>
+		 				</div>
+		 				<div class="elite-top-right fr">
+		 					<a href="#">立即查看竞拍规则<span>>></span></a>
+		 				</div>
+		 			</div>
+		 			<div class="elite-bottom">
+		 				<!--elite-1-->
+		 				{foreach $elites as $row}
+		 				<div class="elite-bottom-main fl">
+
+		 					<div class="elite-bottom-main-img">
+		 					{notempty name="$row.head_img"}
+		 						<img src="{$row.head_img}" width="212" height="212">
+		 					{else/}
+		 						<img src="__IMG__/agentImg/212x212.png" width="212" height="212">
+		 					{/notempty}
+		 					</div>
+
+		 					<div class="elite-bottom-main-text">
+		 						<p class="elite-name">
+		 							<span class="elite-name-1">{$row.name}</span>
+		 							&nbsp;&nbsp;
+		 							<span class="elite-name-2">{$companies[$row.company_id]['name']}</span>
+		 						</p>
+		 						<p class="elite-address"><span>{$allProvinces[$row.province_id]}{$allCities[$row.city_id]}</span></p>
+		 					</div>
+		 					<div class="elite-bottom-main-hover">
+		 						<div class="elite-bottom-main-hover-1">
+		 							<a href="{:url('user/Index/index',['id'=>$row.agent_id])}" target="_blank" class="show-name">{$row.name}</a>
+		 						</div>
+		 					</div>
+		 				</div>
+		 				{/foreach}
+		 			</div>
+		 		</div>
+		 	</div>
+		 </div>
+		 <!--保险精英区域结束-->
+		 <!--会员信息区域-->
+		 <div id="vip">
+		 	<div class="container">
+		 		<div class="vip">
+		 			<div class="vip">
+		 				<div class="vip-left fl">
+		 					<div  class="vip-left-choose">
+		 						<ul class="fl">
+		 							<li a href="#">全部会员从业年限：</li>
+		 							{foreach $experience as $row}
+					 				<li {if condition="$row.id eq $Request.get.experience"}class="condition-on"{/if}><a href="{$row.link}">{$row.name}</a></li>
+					 				{/foreach}
+		 						</ul>
+		 						<ul class="fr">
+		 							<li a href="#">按vip年限排序</li>
+		 						</ul>
+		 					</div>
+
+		 					<div class="vip-left-main">
+		 						{foreach $agents as $row}
+		 						<div class="vip-people fl">
+                                           <!--  代理人头像 -->
+		 							<div class="vip-people-img fl">
+											{notempty name="$row.head_img"}
+							 						<img src="{$row.head_img}" width="138" height="138">
+							 					{else/}
+							 						<img src="__IMG__/agentImg/s400x198.png" width="138" height="138">
+							 				{/notempty}
+                                    </div>
+                                           <!-- 代理人信息 -->
+							 		<div class="vip-people-message fl">
+                                        <div class="vip_a">
+                                        	<div class="vip_a_1">
+				 								<p>
+				 									<span class="vip-name">{$row.name}</span>
+				 									<span class="tel_a">{$row.mobile}</span>
+				 								</p>
+				 								<p>
+				 								    地区:
+				 								    <span>{$allCities[$row.city_id]}</span>
+													&nbsp;&nbsp;
+												    公司:
+													<span>{$companies[$row.company_id]['name']}</span>
+													/
+													<span>{$experience[$row.experience_id]['name']|default='未填写'}</span>
+				 								</p>
+
+
+				 								<p>
+				 									<span class="vip-zone">擅长领域:</span>
+				 									<span>{$row.goodat}</span>
+				 								</p>
+				 							 </div>
+
+				 							 <div class="vip_b">
+											   <a href="{:url('user/Index/index',['id'=>$row.agent_id])}" target="_blank">个人详情</a>
+		 						    	       <a href="{:url('Message/index',['agent_id'=>$row.agent_id])}" class="order_bak" target="_blank">预约我</a>
+		 						    	       <a href="tencent://message/?uin={$row.qq}&Site=&Menu=yes">在线交谈</a>
+				 					     	 </div>
+
+				 						</div>
+				 					</div>
+											<!-- 微信二维码 -->
+				 					<div class="vip_a_2 fl">
+											  <img src="{$row.wechat_qrcode}" height="138" width="138">
+				 					</div>
+
+		 						</div>
+		 						{/foreach}
+		 					</div>
+		 					<!--下边分页-->
+		 					<div class="vip-fenye">
+				 				<div class="fy">
+									{$pager}
+								</div>
+		 					</div>
+		 				</div>
+
+		 				<!--右边区域-->
+		 				<div class="vip-right fr">
+		    				<!--免费定制区域-->
+							<div class="window" id="window" >
+		    					<a href="{:url('/home/message/index')}">
+		    					<img src="__IMG__/public/Free_Made.gif"/>
+		    					</a>
+		    				</div>
+							<!--推介代理人区域-->
+							<div class="referrals">
+								<div class="xianzhong">
+									<ul>
+									{foreach $guessLike as $row}
+										<li><a href="{:url('Insurance/detail', ['id'=>$row.insurance_id])}">
+												{notempty name="$row.icon"}
+													<img src="{$row.icon}" height="100" width="100">
+												{else/}
+													<img src="__IMG__/agentImg/123ceshi.jpg">
+												{/notempty}
+												</a>
+											<div class="xianzhong-main">
+												<p>猜您喜欢</p>
+												<p>投保年龄：</p>
+												<p>{$row.age}</p>
+												<p>保险期限：</p>
+												<p>{$row.duration}</p>
+												<p>适合人群：</p>
+												<p>{$row.group_id}</p>
+												<p>产品特色:</p>
+												<p class="xianzhong-shuoming">{$row.feature}</p>
+											    <p class="xianzhong-xiangqing"><a href="{:url('Insurance/detail',['id'=>$row.insurance_id])}">查看详情>></a></p>
+											</div>
+										 </li>
+									{/foreach}
+									</ul>
+								</div>
+									<div class="xianzhong-main" id="guding">
+														<p>猜您喜欢</p>
+														<p>投保年龄：</p>
+														<p>0-60周岁</p>
+														<p>保险期限：</p>
+														<p>终身</p>
+														<p>适合人群：</p>
+														<p>个人</p>
+														<p>产品特色:</p>
+														<p class="xianzhong-shuoming">长期健康保障产品，提供77种重疾+33种轻症疾病，轻症可累计赔付5次，多种交费方症可累计赔付5次，多种交症可累计赔付5次，多种交症可累计赔付5次，多种交式可灵活选择</p>
+													    <p class="xianzhong-xiangqing"><a href="#">查看详情>></a></p>
+								    </div>
+							</div>
+		 				</div>
+		 			</div>
+
+
+		 		</div>
+		 	</div>
+		 </div>
+
+	     <!--相关搜索-->
+	     <div id="zone-serch">
+	     	<div class="container">
+	     		<div class="zone-serch">
+	     			 <div class="zone-serch-top">
+	     			 	<span>相关搜索</span>
+	     			 </div>
+	     			 <div class="zone-serch-bottom">
+	     			 	<ul>
+	     			 	{foreach $links as $k=>$row}
+	     			 		<li><a href="{$row.url}"><span class="place-1">{$row.title}</span></a></li>
+	     			 	{/foreach}
+	     			 	</ul>
+	     			 </div>
+	     		</div>
+	     	</div>
+	     </div>
+	     <!--相关搜索结束-->
+	     <!--周边买保险开始-->
+	     <div id="rim">
+	     	<div class="container">
+	     		<div class="rim">
+	     			 <div class="rim-top">
+	     			 	<span class="place-1">{$areaInfo.province_name}</span><span>周边买保险</span>
+	     			 </div>
+	     			 <div class="rim-bottom">
+	     			 	<ul>
+	     			 	{foreach $nearCities as $k=>$row}
+	     			 		<li><a href="{$row.link}"><span class="place">{$row.shortname}</span>买保险</a></li>
+	     			 	{/foreach}
+	     			 	</ul>
+
+	     			 </div>
+	     		</div>
+	     	</div>
+	     </div>
+
+{/block}
+{block name='script'}
+	<script type="text/javascript" src="__JS__/jquery.js" ></script>
+	<script type="text/javascript" src="__JS__/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="__JS__/free.js" ></script>
+    <script type="text/javascript" src="__JS__/main.js" ></script>
+	<script>
+		//调用无缝滚动插件
+		$(document).ready(function(){
+			 $(".xianzhong").kxbdMarquee({
+			  isEqual:true,         //所有滚动的元素长宽是否相等,true,false
+			  loop:0,                 //循环滚动次数，0时无限
+			  direction:"up",       //滚动方向，"left","right","up","down"
+			  scrollAmount:1,     //步长
+			  scrollDelay:30       //时长 值越大 越慢
+			});
+		})
+	</script>
+	<script>
+		$.validator.setDefaults({
+		    submitHandler: function() {
+		      alert("提交成功，我们将尽快和您联系");
+		    }
+		});
+		$().ready(function() {
+		    $("#messageform").validate();
+		});
+   </script>
+   <script>
+   	//查看全部公司
+//agent页面热门公司
+$(document).ready(function(){
+	  	var $category=$(".condition-choose2>li:gt(5):not(.condition-choose2>li:last)");
+	  	$category.hide();
+	  	$(".showA1").click(function(){
+	  		var show=$category.is(':hidden');
+	  		if(show){
+	  			$category.show();
+	  			$(".showA1>a").html("<<显示部分")
+	  		}else{
+	  			$category.hide();
+	  		    $(".showA1>a").html("全部公司>>")
+	  		}
+	  		return false;
+	  	})
+
+ })
+
+//agent页面擅长险种
+$(document).ready(function(){
+	  	var $category=$(".condition-choose3>li:gt(8):not(.condition-choose2>li:last)");
+	  	$category.hide();
+	  	$(".showA2").click(function(){
+	  		var show=$category.is(':hidden');
+	  		if(show){
+	  			$category.show();
+	  			$(".showA2>a").html("<<显示部分")
+	  		}else{
+	  			$category.hide();
+	  		    $(".showA2>a").html("全部公司>>")
+	  		}
+	  		return false;
+	  	})
+ })
+   </script>
+   <script >
+		$(document).ready(function(){
+		  $(".nav-main>li:eq(2)").addClass('indexon');
+		})
+   </script>
+   <script>
+	$(".xianzhong>ul>li").mouseover(function(){
+		$("#guding").css("display","none");
+	})
+	$(".xianzhong>ul>li").mouseout(function(){
+		$("#guding").css("display","block");
+	})
+</script>
+
+{/block}

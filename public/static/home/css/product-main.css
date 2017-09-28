@@ -1,0 +1,101 @@
+.main>p{
+	font-size: 14px;
+    width: 1180px;
+    margin: 0 auto;
+    padding-top: 30px;
+    color: #999;
+    letter-spacing: 2px;
+}
+.main-main{
+	margin-top: 20px;
+    overflow: hidden;
+    width: 1180px;
+}
+.main-left{
+    width: 878px;
+    margin-right: 20px;
+    float: left;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    padding: 50px 30px;
+    overflow: hidden;
+}
+.main-left>h1{
+     font-size: 24px;
+    font-weight: 100;
+    text-align: center;
+}
+.main-left>p.time{
+	    text-align: center;
+    margin: 25px;
+    font-size: 14px;
+    overflow: hidden;
+    letter-spacing: 1.5px;
+}
+.main-left>p.features{
+	background: #f3f5f7;
+    font-size: 16px;
+    padding: 15px;
+    display: block;
+    line-height: 30px;
+    }
+.main-left>p.text{
+	font-size: 14px;
+}
+.main-left>h3{
+	padding-top: 20px;
+}
+.main-left>h3>p{
+	font-size: 14px;
+	text-indent: 2em;
+	line-height: 24px;
+	margin-bottom: 10px;
+	letter-spacing: 0.8px;
+}
+.main-left>h3>p.form{
+	text-align: right;
+}
+.main-right{
+	width: 280px;
+    float: left;
+}
+.main-right-list{
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    overflow: hidden;
+     border: 1px solid #e5e5e5;
+}
+.tit{
+	font-size: 18px;
+    color: #FF5400;
+    border-left: 4px solid #FF5400;
+    font-weight: bold;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.title-list{
+	    background: #fff;
+    display: block;
+    padding-left: 20px;
+   
+    padding-top: 10px;
+    overflow: hidden;
+    padding-bottom: 12px;
+}
+.title-list>ul>li{
+	    padding: 6px 0;
+	    
+}
+.title-list>ul>li>a{
+	width: 225px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #5e5e5e;
+}
+.title-list>ul>li>a:hover{
+	color: #FF5400;
+}

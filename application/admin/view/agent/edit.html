@@ -1,0 +1,271 @@
+{extend name="public/base" /}
+{block name="style"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/chosen/chosen.css">
+{/block}
+{block name="body"}
+<script type="text/javascript" src="__PUBLIC__/static/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>修改用户</h2>
+    </div>
+    <form action="" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">用户名<span class="check-tips">（请填写真实姓名）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[name]" value="{$agent.name}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[email]" value="{$agent.email}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">手机<span class="check-tips">（用户手机，用于找回密码等安全操作）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[mobile]" value="{$agent.mobile}">
+            </div>
+        </div>
+        <div class="controls">
+            <label class="item-label">头像</label>
+            <input type="file" id="head_img">
+            <input type="hidden" name="data[head_img]" id="head_img_id" value="{$agent.head_img}"/>
+            <div class="upload-head-img-box">
+            {notempty name="agent['wechat_qrcode']"}
+                <div class="upload-head-img"><img src="{$agent.head_img}"/></div>
+            {/notempty}
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">座机<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[phone]" value="{$agent.phone}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">微信<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[wechat]" value="{$agent.wechat}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">QQ<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[qq]" value="{$agent.qq}">
+            </div>
+        </div>
+        <div  class="form-item">
+            <label class="item-label">当前地区<span class="check-tips"></span></label>
+            <select name="data[province_id]" id="province_id" style="width:150px;">
+                {foreach $provinces as $k=>$row}
+                    <option value="{$k}" {if condition="$k eq $agent.province_id"}selected=""selected{/if}>{$row}</option>
+                {/foreach}
+            </select>
+            <select name="data[city_id]"  id="city_id" style="width:150px;" >
+                {foreach $cities as $k=>$row}
+                    <option value="{$row.id}" {if condition="$row.id eq $agent.city_id"}selected=""selected{/if}>{$row.name}</option>
+                {/foreach}
+            </select>
+            <select name="data[area_id]"  id="area_id" style="width:150px;" >
+                {foreach $areas as $k=>$row}
+                    <option value="{$row.id}" {if condition="$row.id eq $agent.area_id"}selected=""selected{/if}>{$row.name}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">所属公司<span class="check-tips"></span></label>
+                <select class="chosen-select" style="width:260px;" name="data[company_id]" >
+                {foreach $companies as $k=>$row}
+                    <option value="{$row.company_id}" {if condition="$row.company_id eq $agent.company_id"}selected=""selected{/if}>{$row.short_name}</option>
+                {/foreach}
+                </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">从业年限<span class="check-tips"></span></label>
+                <select class="chosen-select" style="width:260px;" name="data[experience_id]" >
+                {foreach $experience as $k=>$row}
+                    <option value="{$k}" {if condition="$k eq $agent.experience_id"}selected=""selected{/if}>{$row}</option>
+                {/foreach}
+                </select>
+        </div>
+        <div class="form-item">
+            <label class="item-label">执业证号<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[license]" value="{$agent.license}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">资格证号<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[certification]" value="{$agent.certification}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">地址<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[address]" value="{$agent.address}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">口号<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="data[slogan]" value="{$agent.slogan}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">个人荣誉<span class="check-tips"></span></label>
+            <label class="textarea input-large">
+                <textarea name="data[honor]">{$agent.honor}</textarea>
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="item-label">自我介绍<span class="check-tips"></span></label>
+            <label class="textarea input-large">
+                <textarea name="data[introduction]">{$agent.introduction}</textarea>
+            </label>
+        </div>
+        <div class="controls">
+            <label class="item-label">微信二维码</label>
+            <input type="file" id="upload_picture">
+            <input type="hidden" name="data[wechat_qrcode]" id="wechat_qrcode" value="{$agent.wechat_qrcode}"/>
+            <div class="upload-img-box">
+            {notempty name="agent['wechat_qrcode']"}
+                <div class="upload-pre-item"><img src="{$agent.wechat_qrcode}"/></div>
+            {/notempty}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">生日<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD'})" name="data[birthday]" value="{$agent.birthday|time_format}" class="text input-2x" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">热门<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[hot]" {if condition="$agent.hot eq 1"}checked="checked"{/if}> 是
+                <input type="radio" class="radio" value="0" name="data[hot]" {if condition="$agent.hot eq 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">推荐<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[recommend]" {if condition="$agent.recommend eq 1"}checked="checked"{/if}> 是
+                <input type="radio" class="radio" value="0" name="data[recommend]" {if condition="$agent.recommend eq 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">新加入<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[new]" {if condition="$agent.new eq 1"}checked="checked"{/if}> 是
+                <input type="radio" class="radio" value="0" name="data[new]" {if condition="$agent.new eq 0"}checked="checked"{/if}> 否
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">状态<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="radio" value="1" name="data[status]" {if condition="$agent.status eq 1"}checked="checked"{/if}> 正常
+                <input type="radio" class="radio" value="2" name="data[status]" {if condition="$agent.status eq 2"}checked="checked"{/if}> 禁用
+                <input type="radio" class="radio" value="0" name="data[status]" {if condition="$agent.status eq 0"}checked="checked"{/if}> 待审核
+                <input type="radio" class="radio" value="-1" name="data[status]" {if condition="$agent.status eq -1"}checked="checked"{/if}> 删除
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+{/block}
+
+{block name="script"}
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('Agent/index')}');
+</script>
+
+<script type="text/javascript">
+    //上传图片
+    /* 初始化上传插件 */
+    $("#upload_picture").uploadify({
+        "height"          : 30,
+        "swf"             : "__PUBLIC__/static/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "上传图片",
+        "uploader"        : "{:url('File/uploadPicture',array('session_id'=>session_id()))}",
+        "width"           : 120,
+        'removeTimeout'   : 1,
+        'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+        "onUploadSuccess" : uploadPicture,
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+    });
+    function uploadPicture(file, data){
+        var data = $.parseJSON(data);
+        var src = '';
+        if(data.status){
+            src = data.url || '__ROOT__' + data.path;
+            $("#wechat_qrcode").val(src);
+            $("#wechat_qrcode").parent().find('.upload-img-box').html(
+                '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+            );
+        } else {
+            updateAlert(data.info);
+            setTimeout(function(){
+                $('#top-alert').find('button').click();
+                $(that).removeClass('disabled').prop('disabled',false);
+            },1500);
+        }
+    }
+</script>
+<script type="text/javascript">
+    //上传图片
+    /* 初始化上传插件 */
+    $("#head_img").uploadify({
+        "height"          : 30,
+        "swf"             : "__PUBLIC__/static/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "上传图片",
+        "uploader"        : "{:url('File/uploadPicture',array('session_id'=>session_id()))}",
+        "width"           : 120,
+        'removeTimeout'   : 1,
+        'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+        "onUploadSuccess" : uploadPicture,
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+    });
+    function uploadPicture(file, data){
+        var data = $.parseJSON(data);
+        var src = '';
+        if(data.status){
+            src = data.url || '__ROOT__' + data.path;
+            $("#head_img_id").val(src);
+            $("#head_img").parent().find('.upload-head-img-box').html(
+                '<div class="upload-head-img"><img src="' + src + '"/></div>'
+            );
+        } else {
+            updateAlert(data.info);
+            setTimeout(function(){
+                $('#top-alert').find('button').click();
+                $(that).removeClass('disabled').prop('disabled',false);
+            },1500);
+        }
+    }
+</script>
+
+<!-- //引入CHOSRNjs -->
+<script src="__STATIC__/chosen/chosen.jquery.min.js"></script>
+<!--调用CHOSEN -->
+<script >
+    $('.chosen-select').chosen({
+        search_contains: true,
+        no_results_text:"没有找到",
+        placeholder_text : "My language message.",
+        disable_search_threshold:10,
+
+
+    });
+</script>
+{/block}

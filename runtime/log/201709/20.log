@@ -1,0 +1,65 @@
+[ 2017-09-20T16:55:42+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ log ] www.fbd.com/ [运行时间：5.138672s][吞吐率：0.19req/s] [内存消耗：3,143.15kb] [文件加载：71]
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitHook @app_init [ RunTime:0.411133s ]
+[ info ] [ LANG ] F:\fabaodou\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.fbd.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => 'session_id',
+  'prefix' => 'ddc_home',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\Index->index[ F:\fabaodou\application\home\controller\Index.php ]
+[ info ] [ VIEW ] F:\fabaodou\public/../application/home/view/default/index\index.html [ array (
+  0 => 'hotCates',
+  1 => 'areaInfo',
+  2 => 'allCitiesForChange',
+  3 => 'metaTitle',
+  4 => 'metaKeywords',
+  5 => 'metaDescription',
+  6 => 'lifeInsuranceCate',
+  7 => 'propertyInsuranceCate',
+  8 => 'lifeCompany',
+  9 => 'propertyCompany',
+  10 => 'seniorAgent',
+  11 => 'provinces',
+  12 => 'cities',
+  13 => 'areas',
+  14 => 'hotPlan',
+  15 => 'expert',
+  16 => 'topic',
+  17 => 'links',
+  18 => 'partners',
+  19 => 'cases',
+  20 => 'skills',
+  21 => 'insurance',
+  22 => 'asks_1',
+  23 => 'asks_2',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------

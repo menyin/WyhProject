@@ -1,0 +1,123 @@
+
+{block name="style"}
+		<link href="__CSS__/login.css" rel="stylesheet">
+		<link href="__CSS__/gongyong.css" rel="stylesheet">
+{/block}
+{block name="body"}
+		<div id="header">
+			<div class="container">
+				<div class="logo">
+					<a href="#">
+						<img src="__IMG__/public/logo.png">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<section>
+			<div class="container">
+				<h3>您的位置：<a href="#">首页</a> > <span class="gray">注册</span></h3>
+			</div>
+		</section>
+
+		<section>
+			<div class="container">
+				<div class="loginMain">
+					<form method="get" action="" id="loginALL">
+						<div class="all">
+
+						   	<b>*</b><span>用&nbsp;户&nbsp;名&nbsp;：</span><input type="text" name="username" placeholder="请输入您的姓名" />
+						</div>
+						<div class="all">
+							<b>*</b><span>输入密码：</span><input type="password" name="psw1" placeholder="请输入密码" id="#password1"/>
+						</div>
+						<div class="all">
+							<b>*</b><span>输入密码：</span><input type="password" name="psw2" placeholder="请再次输入密码" />
+						</div>
+						<div class="all">
+							<b>*</b><span>手机号码：</span><input type="text" name="telep" placeholder="请输入您的手机号号码" />
+						</div>
+						<div class="all">
+							<b>*</b><span>验&nbsp;证&nbsp;码&nbsp;：</span><input type="text" placeholder="请输入手机验证码" name="sjyzm" /><input type="button" class="getY"value="获取手机验证码" />
+						</div>
+						<div  class="all">
+							<input type="checkbox" id="check"/><span id="protocol">同意并接受注册协议</span>
+						</div>
+						<div class="all">
+							<input type="submit" value="注册"  class="login_btn"  disabled="disabled"/>
+						</div>
+
+					</form>
+
+					<div class="fromright">
+					 	<a href="#"><img src="__IMG__/public/01.png" height="250" width="670px"></a>
+					 	<a href="#"><img src="__IMG__/public/02.png" height="250" width="670px"></a>
+					</div>
+				</div>
+			</div>
+		</section>
+			<!--协议框弹出-->
+				<div class="deal">
+
+				</div>
+				<div class="dealAll">
+					<div class="deal_top">
+						<span>注册协议</span> <span id="closeDeal">x</span>
+					</div>
+					<div class="deal_main">
+						<p>请认真阅读以下注册条款</p>
+						<p>注册前请仔细阅读，您只有无条件接受以下所有条款，才能继续申请：</p>
+						<p>1、遵守中华人民共和国、以及你所在国家地区的法律。</p>
+						<p>2、请勿发布任何包含淫秽、粗俗、色情、胁迫、迷信等信息的言论。</p>
+						<p>3、自行承担一切因你本人的言论行为而直接或间接导致的后果所引起的民事或刑事法律纠纷的责任。</p>
+						<p>4、互相尊重，请遵守互联网道德；严禁互相恶意攻击、漫骂。</p>
+						<p>5、本站有权保留或删除本站中的任何内容。</p>
+						<p>6、注册成功后，本站将展示您的个人信息（不包括身份证）。</p>
+						<p class="red">免责声明: 如本站发现内容与实际不符者，将予以删除帐号。</p>
+						<input style="button"  id="closeBtn" value="我已阅读完毕"/>
+					</div>
+				</div>
+			<!--协议框弹出完毕-->
+
+		<!--底部-->
+			<div class="company-footer">
+	    		<div class="container">
+		    		<div class="links">
+		    			<a herf="javascripr:void(0)">关于我们</a>
+		    			<span class="shu">丨</span>
+		    			<a herf="javascripr:void(0)">诚征英才</a>
+		    			<span class="shu">丨</span>
+		    			<a herf="javascripr:void(0)">帮助中心</a>
+		    			<span class="shu">丨</span>
+		    			<a herf="javascripr:void(0)">交易条款</a>
+		    			<span class="shu">丨</span>
+		    			<a herf="javascripr:void(0)">网站地图</a>
+		    			<span class="shu">丨</span>
+		    			<a herf="javascripr:void(0)">友情链接</a>
+		    			<span class="shu">丨</span>
+		    			<a herf="javascripr:void(0)">店铺管理</a>
+		    		</div>
+		    		<div class="copyright">
+		    			<span> CROPYRIGHT 2015-2017 兜兜虫（厦门）科技有限公司 版权所有     24小时服务电话：159-6020-9233  </span><br />
+		        		<span> 公司邮箱：1992355937@qq.com  客服QQ:1992355937  粤ICP备13014375号</span><br />
+		    			<span> <img src="__IMG__/public/pic.gif"></span>
+		    		</div>
+	    	</div>
+	    </div>
+	   <!--底部完毕-->
+{/block}
+{block name='script'}
+	<script type="text/javascript" src="__JS__/jquery.js" ></script>
+	<script type="text/javascript" src="__JS__/login.js" ></script>
+	<script type="text/javascript" src="__JS__/jquery.validate.min.js" ></script>
+	<script>
+		$.validator.setDefaults({
+		    submitHandler: function() {
+		      alert("注册成功，请登录");
+		    }
+		});
+		$().ready(function() {
+		    $("#loginALL").validate();
+		});
+    </script>
+{/block}

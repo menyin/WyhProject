@@ -1,0 +1,1093 @@
+
+.header-serch{
+    width: 618px;
+    height: 60px;
+}
+
+// /*顶部上层*/
+// .top-bar {
+//     color: #666;
+//     height: 36px;
+//     border-bottom: 1px solid #dddddd;
+//     background-color: #f8f8f8;
+//     margin-bottom: 30px;
+// }
+
+// .top-login{
+//     line-height: 36px;
+//     float: left;
+// }
+
+// #destoon-member{
+//     display: inline-block;
+// }
+// .shu{
+//     font-weight: 300;
+// }
+// /*header区域*/
+// #header{
+//     height: 69px;
+//     margin-bottom: 30px;
+// }
+
+// #header form{
+//     background-color: #ff5400;
+//     width: 618px;
+//     float: left;
+//     height: 40px;
+//     margin-top: 5px;
+//     margin-bottom: 7px;
+// }
+// #header .header-selct-box{
+//     width: 85px;
+//     height: 36px;
+//     line-height: 36px;
+//     margin-right: 20px;
+//     float: left;
+//     text-indent: 5px;
+//     margin: 2px 0 0 2px;
+//     position: relative;
+//     background-color: #F7F7F7;
+//    /* z-index: ;*/
+//     cursor: pointer;
+// }
+// #header .header-selct-text{
+//     height: 33px;
+//     line-height: 36px;
+//     overflow: hidden;
+//     text-align: left;
+//     background: no-repeat right 0;
+//     -moz-user-select: none;
+//     -webkit-user-select: none;
+//     user-select: none;
+//     cursor: pointer;
+//     color: #5E5E5E;
+//     padding-left: 6px;
+//     font-size: 12px;
+// }
+// #up-down{
+//     position: absolute;
+//     top: 14px;
+//     left: 68px;
+// }
+// #header .header-selct-opation{
+//     display: none;
+//     margin: 0;
+//     padding: 0;
+//     position: absolute;
+//     z-index: 5;
+//     background: #F7F7F7;
+//     width: 88px;
+//     top: 36px;
+//     left: -2px;
+//     border: 2px solid #FF5400;
+//     border-top: none;
+//     overflow: hidden;
+// }
+// .header-selct-opation li{
+//     height: 30px;
+//     text-align: left;
+//     line-height: 30px;
+//     padding-left: 10px;
+//     color: #555;
+//     overflow: hidden;
+//     cursor: pointer;
+// }
+// .seleced{
+//     background: #FF5400;
+//     color: #fff;
+// }
+// #header form input{
+//     padding-left: 20px;
+//     height: 36px;
+//     line-height: 30px;
+//     margin-top: 2px;
+//     width: 400px;
+//     float: left;
+// }
+// .call-me{
+//     display:inline-block;
+//     width:200px;
+//     height:63px;
+// }
+// #header .hotword li{
+//     display: inline-block;
+//     margin-right: 2px;
+// }
+
+#main{
+    height: 535px;
+}
+
+.main-box {
+    height: 510px;
+    width: 100%;
+}
+
+.main-list {
+    position: relative;
+    z-index: 2;
+    height: 535px;
+    width: 255px;
+    background-color:#323232;
+    color:#383838;
+    float: left;
+/*  border: 1px #383838 solid;*/
+}
+/*
+ * 具体分类
+ * */
+.main-list>ul{
+    /*border-bottom: 1px solid #5E5E5E ;*/
+    transform: scale(1,1);
+    transition: transform 0.3s ease;
+    position: relative;
+    margin-bottom:5px;
+}
+.main-list>ul>li {
+    padding-left: 5px;
+    font-size: 14px;
+    line-height:30px;
+}
+.main-list>ul>li:first-of-type{
+    font-size: 18px;
+    color:#ff5400;
+}
+.main-list>ul>li:first-of-type>a{
+    color:#ff5400;
+    margin:0px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+.main-list>ul>li>a{
+    display: inline-block;
+    color:#fff;
+}
+.main-list>ul>li>a.red1{
+    color:red;
+    font-size:14px;
+}
+.main-list>ul>li>a.red1:hover{
+    color:red;
+    font-size:14px;
+}
+.main-list>ul>li>a:hover{
+    color:#ff5400;
+}
+.main-list>ul>li.border-no{
+    border-bottom: 0;
+}
+.main-list>ul:hover{
+   background-color:#414244;
+}
+
+/*
+ * l轮播
+ * */
+
+.lunbo {
+    position: relative;
+    float: right;
+    width: 905px;
+    height: 342px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.prevBtn {
+    background: url(../images/index/btn01.jpg) no-repeat;
+    height: 47px;
+    width: 32px;
+    display: block;
+    position: absolute;
+    top: 120px;
+}
+
+.prevBtn:hover {
+    background: url(../images/index/btn01.jpg) no-repeat;
+}
+
+.nextBtn {
+    BACKGROUND: url(../images/index/btn02.jpg) no-repeat;
+    HEIGHT: 47px;
+    WIDTH: 32px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 120px;
+}
+
+.nextBtn:hover {
+    background: url(../images/index/btn02.jpg) no-repeat;
+}
+
+.imgSelected {
+    background: url(../images/index/bg01.gif) no-repeat;
+}
+
+.lunboNav {
+    position: absolute;
+    left: 305px;
+    bottom:10px;
+}
+
+.lunboNav a {
+    width: 10px;
+    margin-right: 6px;
+    display: inline;
+    height: 10px;
+    border: 1px solid #FFFFFF;
+    display: block;
+    float: left;
+    background-color: black;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.lunboNav .imgSelected {
+    background: url(../images/index/bg01.gif) no-repeat;
+    color: #FF1555;
+}
+
+.lunboNav a:hover {
+    background: url(../images/index/bg01.gif) no-repeat;
+    color: #FF1555;
+    text-decoration: none;
+}
+
+.qq {
+    display: none;
+    z-index: 200
+}
+.yangai{
+    position: absolute;
+    top: 0;
+    right: -16px;
+    width: 15px;
+    height: 510px;
+    background-color: #f8f8f8;
+}
+/*
+ * 免费定制
+ * */
+
+.window{
+    position: absolute;
+    right: 0px;
+    padding: 0px;
+    padding-left:0px;
+    /* overflow: hidden; */
+    background-color: rgba(0,0,0,.8);
+    width: 240px;
+    height: 342px;
+    display: block;
+}
+.tidingzhi {
+    /* background-color: #fff; */
+    height: 320px;
+    position: relative;
+}
+.free-tingzhi1{
+    font-size:24px;  color:#FF5400;text-align: center;margin-bottom:8px;
+    font-family: simsun;font-weight:bolder;
+    letter-spacing: 1px;
+}
+.free-tingzhi2{
+    font-size:18px;  color:#FF5400;text-align: center;
+}
+.tidingzhi>ul {
+    width: 235px;
+    margin: 0 auto;
+}
+.window li {
+       width: 223px;
+    height: 33px;
+    padding-left: 10px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+
+}
+.message_about{
+     padding:0  15px 0 10px;
+    display: block;
+    color: #FF5400;
+    line-height: 22px;
+}
+.tidingzhi>ul>li>span {
+    float: left;
+    font-size: 14px;
+    margin-top: 5px;
+    vertical-align: middle;
+    color: #FFFFFF;
+    position: relative;
+}
+.tidingzhi>ul li>div {
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
+.select1{
+    height: 30px;
+    width: 140px;
+    margin-left: 3px;
+    padding-left: 7px;
+}
+#datepicker {
+    border: 1px solid #CBCBCB;
+    padding-left: 10px;
+}
+.ask-btn-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+       height: 84px;
+    /* background-color: #f8f8f8; */
+    padding-top: 2px;
+    }
+.window .ask-btn {
+    display: block;
+    width: 160px;
+    height: 40px;
+    line-height: 35px;
+    background-image: url(../images/index/freeGet.png);
+    background-size:cover;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin-top: 25px;
+    margin: 0 auto;
+    cursor: pointer;
+    s
+}
+.xin{
+    display: inline-block;
+    color: #FF5400;
+    font-size: 20px;
+    margin-top: 5px;
+    position: absolute;
+    left: -14px;
+    top: -1px;
+}
+/*
+ 轮播下广告位置
+ * */
+.lunbo-ad{
+     width: 905px;
+    height: 195px;
+    margin-top: 10px;
+    position: relative;
+    float: right;
+    background-color: #FFFFFF;
+}
+.lunbo-ad-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    border-bottom: 1px solid #ff5400;
+    margin-bottom: 7px;
+}
+.lunbo-ad-1{
+    width: 144px;
+    height: 146px;
+    position: relative;
+    float: left;
+    margin: 0 16px;
+    /* margin-right: 28px; */
+    transform: scale(1,1);
+    transition: transform 0.3s ease;
+    -moz-transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+}
+.lunbo-ad-1>a{
+    display:block;
+    height:100%;
+    width:100%
+}
+.lunbo-ad-1:nth-of-type(6){
+    margin-right: 0;
+}
+.lunbo-ad-1:hover{
+    -moz-box-shadow: 0px 0px 10px 2px #000000;
+    -webkit-box-shadow: 0px 0px 10px 2px #000000;
+    box-shadow: 0px 0px 10px 2px #000000;
+    transform: scale(1.05,1.03);
+    transition: transform 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 0 0 2 #000000;
+    -moz-transform: scale(1.05,1.03);
+    -webkit-transform: scale(1.05,1.03);
+    -o-transform:scale(1.05,1.03);
+}
+.lunbo-ad-1:nth-of-type(2):hover{
+    transform: translateX(10px), scale(1.6,1.4);
+    transition: transform 0.3s ease;
+}
+.lunbo-ad-text{
+    width: 100%;
+    height: 33.333%;
+    opacity: 0.5;
+    background-color: #000000;
+    position: absolute;
+    bottom: 0;
+}
+.lunbo-ad-text-p{
+    width: 100%;
+    height: 33.333%;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+    padding-top: 2px;
+}
+.lunbo-ad-text-p>p{
+    margin: 3px 0;
+    text-align: left;
+    padding-left: 5px;
+    letter-spacing: 0.4px;
+}
+.yangai1{
+    width: 900px;
+    height: 10px;
+    position: absolute;
+    background-color: #f8f8f8;
+    top:-10px
+}
+/*
+ *热门保险
+ * */
+
+.hot-insure-box {
+    width: 100%;
+    height: 430px;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+.hot-title{
+    color: #FF5400;
+    font-size: 12px;
+    padding-left: 2px;
+}
+.hot-insure-1{
+    width: 295px;
+    height:380px;
+    border-right: 1px solid #dadada;
+    float: left;
+    padding:15px 30px;
+    transform: scale(1,1);
+    transition: transform 0.3s ease;
+    -moz-transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+    -o-transform:scale(1,1) ;
+    background-color: #FFFFFF;
+    position: relative;
+}
+.hot-insure-1:nth-of-type(4){
+      border-right:0;
+}
+.hot-insure-1:hover{
+    -moz-box-shadow: 0px 0px 10px 2px #000000;
+    -webkit-box-shadow: 0px 0px 10px 2px #000000;
+    box-shadow: 0px 0px 10px 2px #000000;
+    transform: scale(1.05,1.03);
+    transition: transform 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 0 0 2 #000000;
+    -moz-transform: scale(1.05,1.03);
+    -webkit-transform: scale(1.05,1.03);
+    -o-transform:scale(1.05,1.03) ;
+}
+
+.hot-insure-1 .insure-title{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+    display: block;
+    padding: 0 20px;
+}
+.insure-weizhi{
+    display: inline-block;
+}
+
+.insure-xianzhong{
+    display: inline-block;
+    float: right;
+}
+.hot-insure-1>p{
+    font-size: 12px;
+    color: #5E5E5E;
+    border-bottom: 1px dashed #5E5E5E;
+    line-height: 26px;
+    width: 150px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+.hot-insure-1 .insuer-duixiang1,.insuer-duixiang2,.insuer-duixiang3{
+    font-size: 15px;
+    line-height: 23px;
+    display: block;
+    text-align: center;
+}
+.hot-insure-1>.insuer-lanse{
+    font-size: 14px;
+    line-height: 20px;
+    margin: 15px auto;
+    width: 215px;
+    background-color: #f8f8f8;
+    color: #FF5400;
+    padding: 0 30px;
+    letter-spacing: 1.5px;
+    height:100px;
+
+}
+.hot-insure-1 .insuer-baofei{
+    font-size: 13px;
+    width: 120px;
+    height: 50px;
+    line-height: 20px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #5E5E5E;
+}
+.hot-insure-1 .insuer-baofei .nian1{
+    float: left;
+}
+.nian1>span{
+    display: block;
+}
+.nian2>span{
+    display: block;
+}
+.hot-insure-1 .insuer-baofei .nian2{
+    float: right;
+}
+.nian-fei-jiaqian{
+    color: #FF5400;
+}
+.insure-button{
+    width: 148px;
+    height: 38px;
+    cursor: pointer;
+    background-image: url(../images/index/foursearch.png);
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+.insure-button:hover{
+    background-position-y: 0.1px;
+    -moz-box-shadow: 0px 0px 10px 2px #999999;
+    -webkit-box-shadow: 0px 0px 10px 2px #999999;
+    box-shadow: 0px 0px 10px 2px #999999;
+}
+.xiangqingaa{
+    width: 100%;
+    height: 40px;
+    display: block;
+    text-align: center;
+}
+/*
+ *保险专家区域
+ * */
+
+.insure-professor-box {
+    background-color: #FFFFFF;
+    height: 450px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.insure-professor-box-title {
+    border-bottom: 1px solid #dadada;
+    height: 50px;
+    line-height: 50px;
+    color: #FF5400;
+    font-size: 24px;
+    text-indent: 20px;
+    position: relative;
+}
+.insure-professor-little-t{
+    display: block;
+    float: right;
+    font-size: 12px;
+    color: #5E5E5E;
+    margin-right: 50px;
+}
+.insure-professor-little-t>span{
+
+}
+.insure-professor-main{
+    height: 400px;
+}
+.insure-professor-main-box1{
+    width: 250px;
+    border-right: 1px solid #DADADA;
+    height: 100%;
+    float: left;
+    padding: 20px 15px;
+}
+
+.insure-professor-main-box1>form>select{
+    border: solid 1px #ccc;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 200px;
+    padding: 6px 0;
+    color: #666;
+    text-indent: 8px;
+       margin: 10px 0;
+    background: url(../images/public/arrow3.png) #fff no-repeat;
+    background-position:180px 10px;
+    font-size:16px;
+}
+.insure-professor-main-box2{
+    width: 930px;
+    height: 100%;
+    float: left;
+    padding: 20px 15px;
+}
+
+.professor-specific{
+    transform: scale(1,1);
+    transition: transform 0.3s ease;
+    height: 120px;
+    width: 290px;
+    float: left;
+    padding: 10px;
+/*  border: 1px solid #DADADA;*/
+}
+
+.qqchat{
+    display: block;
+    margin-top: 5px;
+    height: 25px;
+    width: 100px;
+}
+.qqchat a{
+    display: block;
+    height: 20px;
+    width: 76px;
+    color: #FFFFFF;
+    background-image: url(../images/index/qqchat.png);
+    background-repeat: no-repeat;
+    float: left;
+    background-size: cover;
+    border-radius: 4px;
+}
+.qqchat a:hover{
+     -moz-box-shadow: 0px 0px 10px 2px #999999;
+    -webkit-box-shadow: 0px 0px 10px 2px #999999;
+    box-shadow: 0px 0px 10px 2px #999999;
+}
+.professor-specific-img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.professor-specific-img>a{
+   display:block;
+    width: 100px;
+    height: 100px;
+}
+.professor-specific-main{
+    width: 162px;
+    height: 100px;
+    float: right;
+    /*background-color: #00A346;*/
+}
+.professor-specific-main>p:nth-of-type(2){
+    letter-spacing:0px;
+}
+.professor-specific-main>p{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    line-height: 22px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    position: relative;
+    color: #010101;
+
+}
+.insure-professor-main-box1>form{
+    padding-left: 10px;
+}
+
+.insure-professor-select{
+    width: 200px;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 15px;
+    border: solid 1px #ccc;
+    /* margin: 0 auto; */
+    font-size:16px;
+}
+.insure-professor-select>option{
+    height:20px;
+    border-bottom: 1px solid #5E5E5E;
+}
+.insure-professor-submit{
+    background-color: #FFFFFF;
+    background-image: url(../images/index/threesearch.png);
+    background-size: cover;
+    height: 36px;
+    width: 142px;
+    border:0;
+    padding: 0;
+    border-radius:5px;
+        margin-left: 25px;
+}
+.insure-professor-submit:hover{
+    background-position-y: 0.1px;
+    -moz-box-shadow: 0px 0px 10px 2px #999999;
+    -webkit-box-shadow: 0px 0px 10px 2px #999999;
+    box-shadow: 0px 0px 10px 2px #999999;
+}
+.gengduo{
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    height: 50px;
+    width: 80px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+/*首页广告*/
+.index-ad{
+    height: 130px;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+/*保险专题*/
+.insure-subject{
+    height: 530px;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+.insure-subject-1,.insure-subject-2,.insure-subject-3{
+    height: 100%;
+    float: left;
+}
+.insure-subject-1{
+    width: 389px;
+    border-right: 1px solid #dadada;
+}
+.insure-subject-1-main{
+    height:480px;
+    position: relative;
+    padding: 10px 15px;
+}
+.insuerl-top{
+    width: 358px;
+    height: 160px;
+/*  background-color: #0000FF;*/
+}
+.insuerl-bottom{
+    height: 270px;
+    width: 358px;
+    padding: 10px ;
+    /*background-color: red;*/
+}
+.insuerl-bottom>p:nth-of-type(1){
+    font-size: 18px;
+    text-align: center;
+    line-height: 36px;
+}
+.insuerl-bottom>p:nth-of-type(2){
+    font-size: 14px;
+    text-align: left ;
+    line-height: 24px;
+}
+.insuerl-bottom>p>a:hover{
+    color:#000000;
+}
+.insuer-list{
+    position: absolute;
+    bottom: 13px;
+    left: 90px;
+}
+.insuer-list a{
+    display: inline-block;
+    width: 65px;
+    height: 15px;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    margin-right: 10px;
+    background-color: #f8f8f8;
+}
+ .insuer-list >.insuer-selected{
+    background-color: #FF5400;
+}
+/*保险咨询*/
+.insure-subject-2{
+    width: 480px;
+    border-right: 1px solid #dadada;
+}
+.myquestion{
+    display: inline-block;
+    float: right;
+    border: 1px solid #5E5E5E;
+    background-color: #FFFFFF;
+    margin-top: 18px;
+    margin-right: 10px;
+    padding: 2px 8px;
+    border-radius: 11px;
+    cursor:pointer;
+}
+.myquestion:hover{
+     border: 1px solid #ff5400;
+     color: #ff5400;
+}
+.insure-subject-2-main{
+    height: 480px;
+    position: relative;
+    padding: 10px 15px;
+}
+.insure-subject-2-main>ul>li{
+
+}
+.insure-subject-2-bottom1{
+    height: 170px;
+    border-bottom: 1px dashed #DADADA;
+}
+.insure-subject-2-bottom1-left>a{
+    float: left;
+    width: 360px;
+    text-indent: 25px;
+    font-size: 14px;
+    color: #2c2c2c;
+    background: url(../images/index/diandian.png) no-repeat 0;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url(ellipsis.xml#ellipsis);
+    margin-bottom: 8px;
+}
+.insure-subject-2-bottom1-left>a:hover{
+    background-image: url(../images/index/wenhao.png);
+    color: #FF5400;
+}
+.insure-subject-2-bottom1-date{
+    float: right;
+    width: 50px;
+    height: 20px;
+    background: url(../images/index/love.png) no-repeat left center;
+    color: #aaa;
+    overflow: hidden;
+    text-indent: 20px;
+    line-height: 21px;
+    cursor: pointer;
+}
+.insure-subject-2-bottom2{
+    margin-top: 15px;
+
+}
+/*图片*/
+.insure-subject-3{
+    width: 310px;
+    padding: 15px 10px;
+
+}
+.insure-subject-3-main{
+    width: 276px;
+    height: 223px;
+    margin: 18px auto;
+
+}
+/*投保指南*/
+.insuer-guide{
+    height: 463px;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+.insuer-guide-main-1{
+    height: 415px;
+    width: 33.33%;
+    border-right:1px solid #dadada;
+    float: left;
+    padding: 10px;
+}
+
+.insuer-guide-main-1:nth-of-type(3){
+    border-right: 0;
+}
+.insuer-guide-main-1>p:nth-of-type(1){
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.insuer-guide-main-1>p:nth-of-type(2){
+    height: 130px;
+    margin-bottom: 15px;
+}
+.insuer-guide-main-1-list{
+    height: 175px;
+}
+.insuer-guide-main-1-list>ul>li>a{
+    float: left;
+    width: 360px;
+    text-indent: 25px;
+    font-size: 14px;
+    color: #2c2c2c;
+    background: url(../images/index/diandian.png) no-repeat 0;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url(ellipsis.xml#ellipsis);
+    margin-bottom: 8px;
+}
+.insuer-guide-main-1-list>ul>li>a:hover{
+    color: #ff5400;
+    background: url(../images/index/dianhover.png) no-repeat;
+    background-position: 4px -4px;
+}
+
+.insuer-guide-main-1>p:nth-of-type(3){
+    border: 1px solid #a6a6a6;
+    letter-spacing: 2px;
+    width: 100px;
+    font-size: 16px;
+    margin: 0 auto;
+    padding: 2px 2px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.insuer-guide-main-1>p:nth-of-type(3):hover{
+     border: 1px solid #ff5400;
+     color:ff5400;
+}
+/*友情链接*/
+
+.other-www{
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+.other-title{
+    border-bottom: 1px solid #DADADA;
+    height: 50px;
+}
+.other-title-list{
+    position: relative;
+
+}
+.other-title-list li.on{
+    color: #FF5400;
+}
+.other-title-list li{
+    width: 134px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    color: #555555;
+    float: left;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.other-title-list>p{
+    position: absolute;
+    overflow: hidden;
+    height: 3px;
+    background-color: #FF5400;
+    width: 134px;
+    top: 48px;
+}
+.other-product-wrap{
+    height: 210px;
+    width: 100%;
+}
+.other-product{
+    position: relative;
+    overflow: hidden;
+    display: none;
+    width: 1180px;
+    height: 195px;
+    padding: 10px 15px;
+}
+.showtime{
+    display: block;
+}
+.xx{
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    display:none;
+}
+.xx img{
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+}
+.professor-specific:hover{
+    -moz-box-shadow: 0px 0px 2px 3px #000000;
+    -webkit-box-shadow: 0px 0px 2px 3px #000000;
+    box-shadow: 0px 0px 10px 2px #000000;
+    transform: scale(1.05,1.03);
+    transition: transform 0.3s ease;
+    z-index: 99;
+    box-shadow: 0 0 1 5 #5E5E5E;
+    -moz-transform: scale(1.05,1.03);
+    -webkit-transform: scale(1.05,1.03);
+    -o-transform:scale(1.05,1.03) ;
+}
+.professor-specific:hover .xx{
+    display: block;
+}
+.error{
+    color:red;
+}
+.other-product>a{
+    display: inline-block;
+    margin: 4px 10px;
+    width: 207px;
+}
+.other-product>a>img{
+     max-width: 100%;
+}
+.index-ad>a{
+    width:1180px;
+    height:130px;
+    display:block;
+}
+.insure-subject-3-main>a{
+    width:276px;
+    height:223px;
+    display:block;
+}
+/*
+ * 城市三级联动css
+ * */
+._citys { width: 450px; display: inline-block; border: 2px solid #eee; padding: 5px; position: relative; background-color: #f8f8f8;}
+._citys span { color: #56b4f8; height: 15px; width: 15px; line-height: 15px; text-align: center; border-radius: 3px; position: absolute; right: 10px; top: 10px; border: 1px solid #ff5400; cursor: pointer; }
+._citys0 { width: 100%; height: 34px; display: inline-block; border-bottom: 2px solid #FF5400; padding: 0; margin: 0; }
+._citys0 li { display: inline-block; line-height: 34px; font-size: 15px; color: #888; width: 80px; text-align: center; cursor: pointer; }
+.citySel { background-color: #FF5400; color: #fff !important; }
+._citys1 { width: 100%; display: inline-block; padding: 10px 0; }
+._citys1 a { width: 83px; height: 35px; display: inline-block; background-color: #f8f8f8; color: #666; margin-left: 6px; margin-top: 3px; line-height: 35px; text-align: center; cursor: pointer; font-size: 13px; overflow: hidden; }
+._citys1 a:hover { color: #fff; background-color: #ff5400; }
+.AreaS { background-color: #56b4f8 !important; color: #fff !important; }
+.no1{
+    padding-left:10px !important;
+}
+.no1>a{
+    letter-spacing: 5px;
+    margin-left: 13px;
+}
